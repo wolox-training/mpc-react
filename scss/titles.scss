@@ -1,4 +1,7 @@
+@import 'colors';
+@import 'sizes';
+
 .title {
-	color: #000;
-	font-size: 40px;
+	color: $color-title;
+	font-size: $size-title;
 }
