@@ -1,3 +1,19 @@
-.title {
-    color: red;
+@import 'colors';
+@import 'sizes';
+
+.content-title {
+	display: flex;
+	align-items: center;
+	position: relative;
+
+	.logo-title {
+		width: 100px;
+	}
+	
+	.title {
+		color: black;
+		font-size: $text-big;
+		position: absolute;
+		left: 78px;
+	}
 }
