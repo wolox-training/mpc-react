@@ -1,8 +1,14 @@
-//@import 'colors';
+@import 'colors';
+@import 'sizes';
 
-.tech {
+@mixin card-size {
   width: 200px;
   height: 300px;
+  border-radius: 10px;  
+}
+
+.tech {
+  @include card-size;
   padding: 0px 25px;
   margin: 20px;
   position: relative;
@@ -10,15 +16,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #BED23C;
-  border-radius: 10px;
+  background-color: $green;
 
   &::after {
     content: ' ';
-    width: 200px;
-    height: 300px;
-    border: 1px solid #BED23C;
-    border-radius: 10px;
+    @include card-size;
+    border: 1px solid $green;
     position: absolute;
     top: -10px;
     left: -10px;
@@ -27,21 +30,21 @@
   
 
   .tech-image {
-    width: 100px;
-    margin-bottom: 15px;
+    width: $tech-logo-size;
+    margin-bottom: $space-between-texts;
   }
 
   .tech-title {
-    margin-bottom: 15px;
+    margin-bottom: $space-between-texts;
   }
 
   .tech-release {
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: $space-between-texts;
   }
 
   .tech-description {
-    font-size: 12px;
+    font-size: $text-small;
     text-align: center;
   }
 }
