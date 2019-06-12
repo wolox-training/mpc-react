@@ -2,36 +2,36 @@
 @import 'sizes';
 
 @mixin card-size {
-  width: 200px;
+  border-radius: 10px;
   height: 300px;
-  border-radius: 10px;  
+  width: 200px;
 }
 
 .tech {
   @include card-size;
-  padding: 0px 25px;
-  margin: 20px;
-  position: relative;
+  align-items: center;
+  background-color: $green;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  background-color: $green;
+  margin: 20px;
+  padding: 0px 25px;
+  position: relative;
 
   &::after {
-    content: ' ';
     @include card-size;
+    content: ' ';
     border: 1px solid $green;
+    left: -10px;
     position: absolute;
     top: -10px;
-    left: -10px;
     z-index: -1;
   }
   
 
   .tech-image {
-    width: $tech-logo-size;
     margin-bottom: $space-between-texts;
+    width: $tech-logo-size;
   }
 
   .tech-title {
