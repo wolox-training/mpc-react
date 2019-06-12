@@ -1,52 +1,49 @@
-//@import 'colors';
+@import 'colors';
+@import 'sizes';
 
-.content-tech {
+@mixin card-size {
+  border-radius: 10px;
+  height: 300px;
+  width: 200px;
+}
+
+.tech {
+  @include card-size;
+  align-items: center;
+  background-color: $green;
   display: flex;
-  margin-left: 100px;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+  padding: 0px 25px;
+  position: relative;
 
-  .tech {
-    width: 200px;
-    height: 300px;
-    padding: 0px 25px;
-    margin: 20px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #BED23C;
-    border-radius: 10px;
+  &::after {
+    @include card-size;
+    content: ' ';
+    border: 1px solid $green;
+    left: -10px;
+    position: absolute;
+    top: -10px;
+    z-index: -1;
+  }
 
-    &::after {
-      content: ' ';
-      width: 200px;
-      height: 300px;
-      border: 1px solid #BED23C;
-      border-radius: 10px;
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      z-index: -1;
-    }
+  .tech-image {
+    margin-bottom: $space-between-texts;
+    width: $tech-logo-size;
+  }
 
+  .tech-title {
+    margin-bottom: $space-between-texts;
+  }
 
-    .tech-image {
-      width: 100px;
-      margin-bottom: 15px;
-    }
+  .tech-release {
+    font-weight: 600;
+    margin-bottom: $space-between-texts;
+  }
 
-    .tech-title {
-      margin-bottom: 15px;
-    }
-
-    .tech-release {
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
-
-    .tech-description {
-      font-size: 12px;
-      text-align: center;
-    }
+  .tech-description {
+    font-size: $text-small;
+    text-align: center;
   }
 }
