@@ -1,10 +1,21 @@
 @import 'colors';
 @import 'sizes';
 
-.title {
-	color: $black;
-	font-size: $size-title;
-	padding-left: 300px;
-	padding-top: 100px;
-	padding-bottom: 10px;
+.content-title {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 100px 0px 0px 350px;
+
+  .logo-title {
+    width: $tech-logo-size;
+    height: $tech-logo-size;
+  }
+
+  .title {
+    color: black;
+    font-size: $text-big;
+    position: absolute;
+    left: 420px;
+  }
 }

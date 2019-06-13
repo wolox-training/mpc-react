@@ -10,7 +10,9 @@
 .content-tech {
   display: flex;
   flex-wrap: wrap;
+  margin: 0 30px;
   padding: 0 400px;
+  position: relative;
 
   .tech {
     @include card-size;
@@ -25,8 +27,8 @@
 
     &::after {
       @include card-size;
-      content: ' ';
       border: 1px solid $green;
+      content: ' ';
       left: -10px;
       position: absolute;
       top: -10px;
@@ -41,8 +43,8 @@
 
     .tech-image {
       margin-bottom: $space-between-texts;
-      width: $tech-logo-size;
       height: $tech-logo-size;
+      width: $tech-logo-size;
     }
 
     .tech-title {
