@@ -7,43 +7,52 @@
   width: 200px;
 }
 
-.tech {
-  @include card-size;
-  align-items: center;
-  background-color: $green;
+.content-tech {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 30px;
-  padding: 0px 25px;
+  flex-wrap: wrap;
+  margin: 0 30px;
+  padding: 0 400px;
   position: relative;
 
-  &::after {
+  .tech {
     @include card-size;
-    border: 1px solid $green;
-    content: ' ';
-    left: -10px;
-    position: absolute;
-    top: -10px;
-    z-index: -1;
-  }
+    align-items: center;
+    background-color: $green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+    padding: 0px 25px;
+    position: relative;
 
-  .tech-image {
-    margin-bottom: $space-between-texts;
-    width: $tech-logo-size;
-  }
+    &::after {
+      @include card-size;
+      border: 1px solid $green;
+      content: ' ';
+      left: -10px;
+      position: absolute;
+      top: -10px;
+      z-index: -1;
+    }
 
-  .tech-title {
-    margin-bottom: $space-between-texts;
-  }
+    .tech-image {
+      margin-bottom: $space-between-texts;
+      height: $tech-logo-size;
+      width: $tech-logo-size;
+    }
 
-  .tech-release {
-    font-weight: 600;
-    margin-bottom: $space-between-texts;
-  }
+    .tech-title {
+      margin-bottom: $space-between-texts;
+    }
 
-  .tech-description {
-    font-size: $text-small;
-    text-align: center;
+    .tech-release {
+      font-weight: 600;
+      margin-bottom: $space-between-texts;
+    }
+
+    .tech-description {
+      font-size: $text-small;
+      text-align: center;
+    }
   }
 }
