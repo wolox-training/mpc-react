@@ -5,7 +5,7 @@
 	display: flex;
 	align-items: center;
   position: relative;
-  margin: 30px 0px 0px 200px;
+  padding: 100px 0px 0px 350px;
 
 	.logo-title {
     width: $tech-logo-size;
@@ -16,6 +16,6 @@
 		color: black;
 		font-size: $text-big;
 		position: absolute;
-		left: 75px;
+		left: 420px;
 	}
 }
