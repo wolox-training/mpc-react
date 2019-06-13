@@ -1,7 +1,21 @@
 @import 'colors';
 @import 'sizes';
 
-.title {
-	color: $black;
-	font-size: $size-title;
+.content-title {
+	display: flex;
+	align-items: center;
+  position: relative;
+  margin: 20px 0px 20px 100px;
+
+	.logo-title {
+    width: $tech-logo-size;
+    height: $tech-logo-size;
+	}
+
+	.title {
+		color: black;
+		font-size: $text-big;
+		position: absolute;
+		left: 75px;
+	}
 }
