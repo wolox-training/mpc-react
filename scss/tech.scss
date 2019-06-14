@@ -35,6 +35,12 @@
       z-index: -1;
     }
 
+    &:hover::after {
+      top: 10px;
+      left: 10px;
+      transition: 0.5s;
+    }
+
     .tech-image {
       margin-bottom: $space-between-texts;
       height: $tech-logo-size;
