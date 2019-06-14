@@ -2,22 +2,20 @@
 @import 'sizes';
 
 @mixin card-size {
-  border-radius: 10px;
-  height: 300px;
   width: 200px;
 }
 
 .content-tech {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   margin: 0 30px;
   padding: 0 400px;
   position: relative;
+  width: max-content;
 
   .tech {
     @include card-size;
     align-items: center;
-    background-color: $green;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,7 +25,6 @@
 
     &::after {
       @include card-size;
-      border: 1px solid $green;
       content: ' ';
       left: -10px;
       position: absolute;
@@ -60,5 +57,12 @@
       font-size: $text-small;
       text-align: center;
     }
+  }
+
+  .tech-1 {
+    grid-row: 1/3;
+    align-self: center;
+    border-right: 2px solid $green;
+    height: 600px;
   }
 }
