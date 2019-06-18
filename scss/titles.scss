@@ -5,17 +5,32 @@
   display: flex;
   align-items: center;
   position: relative;
-  padding: 120px 0px 0px 200px;
-
-  .logo-title {
-    width: $tech-logo-size;
-    height: $tech-logo-size;
-  }
+  padding: 170px 0px 20px 300px;
+  text-align: center;
 
   .title {
     color: black;
     font-size: $text-big;
-    position: absolute;
-    left: 270px;
+    position: relative;
+
+    &::before {
+      content: '';
+      background: url('maquetado/assets/triangle.svg');
+      min-width: 75px;
+      min-height: 100px;
+      background-size: 100%;
+      position: absolute;
+      background-repeat: no-repeat;
+      left: -55px;
+      top: -35px;
+      z-index: -1;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .content-title {
+    padding: 170px 0px 30px 470px;
   }
 }
