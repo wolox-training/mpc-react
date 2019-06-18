@@ -70,7 +70,10 @@
 @media only screen and (max-width: 1024px) {
 
   .content-tech {
+    padding: 0 350px;
     grid-template-columns: 1fr;
+    margin: 0;
+    width: 100%;
 
     .tech {
       border-bottom: 2px solid $green;
