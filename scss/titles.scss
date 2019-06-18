@@ -2,20 +2,20 @@
 @import 'sizes';
 
 .content-title {
-  display: flex;
   align-items: center;
+  display: flex;
+  padding: 120px 0px 0px 350px;
   position: relative;
-  padding: 100px 0px 0px 350px;
 
   .logo-title {
-    width: $tech-logo-size;
     height: $tech-logo-size;
+    width: $tech-logo-size;
   }
 
   .title {
     color: black;
     font-size: $text-big;
-    position: absolute;
     left: 420px;
+    position: absolute;
   }
 }

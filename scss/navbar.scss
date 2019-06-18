@@ -1,0 +1,24 @@
+@import 'colors';
+@import 'sizes';
+
+.navbar {
+  align-items: center;
+  background-color: $white;
+  box-shadow: 0 0 20px $grey;
+  display: flex;
+  height: $nav-height;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  .nav-logo {
+    height: $nav-logo-height;
+  }
+
+  .nav-text {
+    font-size: $text-big;
+  }
+}
