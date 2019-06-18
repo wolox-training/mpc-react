@@ -1,0 +1,27 @@
+@import 'colors';
+@import 'sizes';
+
+.footer {
+  align-items: center;
+  background-color: $blue;
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  justify-content: space-around;
+  margin-top: 50px;
+  padding: 20px 0;
+  width: 100%;
+
+  .footer-text {
+    color: $white;
+    font-size: $text-big;
+    margin-bottom: $space-between-texts;
+  }
+
+  .footer-copyright {
+    align-self: flex-end;
+    color: $white;
+    font-size: $text-small;
+    padding-right: 10px;
+  }
+}
