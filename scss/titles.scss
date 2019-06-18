@@ -2,11 +2,16 @@
 @import 'sizes';
 
 .content-title {
-  display: flex;
   align-items: center;
-  position: relative;
-  padding: 170px 0px 20px 300px;
   text-align: center;
+  display: flex;
+  padding: 150px 0px 0px 350px;
+  position: relative;
+
+  .logo-title {
+    height: $tech-logo-size;
+    width: $tech-logo-size;
+  }
 
   .title {
     color: black;

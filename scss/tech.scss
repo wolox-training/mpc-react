@@ -8,8 +8,7 @@
 .content-tech {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 0 30px;
-  padding: 0 400px;
+  margin: 0 500px;
   position: relative;
   width: max-content;
 
@@ -33,14 +32,14 @@
     }
 
     &:hover::after {
-      top: 10px;
       left: 10px;
+      top: 10px;
       transition: 0.5s;
     }
 
     .tech-image {
-      margin-bottom: $space-between-texts;
       height: $tech-logo-size;
+      margin-bottom: $space-between-texts;
       width: $tech-logo-size;
     }
 
