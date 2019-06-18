@@ -3,7 +3,6 @@
 
 .content-title {
   align-items: center;
-  text-align: center;
   display: flex;
   padding: 150px 0px 0px 350px;
   position: relative;
@@ -19,14 +18,14 @@
     position: relative;
 
     &::before {
-      content: '';
       background: url('maquetado/assets/triangle.svg');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      content: '';
+      left: -55px;
       min-width: 75px;
       min-height: 100px;
-      background-size: 100%;
       position: absolute;
-      background-repeat: no-repeat;
-      left: -55px;
       top: -35px;
       z-index: -1;
     }
