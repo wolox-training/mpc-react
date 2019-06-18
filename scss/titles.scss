@@ -18,13 +18,11 @@
     position: relative;
 
     &::before {
-      background: url('maquetado/assets/triangle.svg');
-      background-repeat: no-repeat;
-      background-size: 100%;
+      background: url('maquetado/assets/triangle.svg') no-repeat 100%;
       content: '';
       left: -55px;
-      min-width: 75px;
       min-height: 100px;
+      min-width: 75px;
       position: absolute;
       top: -35px;
       z-index: -1;

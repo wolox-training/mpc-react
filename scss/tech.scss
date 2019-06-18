@@ -56,13 +56,13 @@
       font-size: $text-small;
       text-align: center;
     }
-  }
 
-  .tech-1 {
-    align-self: center;
-    border-right: 2px solid $green;
-    grid-row: 1/3;
-    height: 600px;
+    &:first-child {
+      align-self: center;
+      border-right: 2px solid $green;
+      grid-row: 1/3;
+      height: 600px;
+    }
   }
 }
 
@@ -81,11 +81,11 @@
       &:last-child {
         border-bottom: none;
       }
-    }
 
-    .tech-1 {
-      border-right: none;
-      height: auto;
+      &:first-child {
+        border-right: none;
+        height: auto;
+      }
     }
   }
 }
