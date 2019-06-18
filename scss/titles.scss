@@ -30,7 +30,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: $breakpoint) {
 
   .content-title {
     padding: 170px 0px 30px 380px;
