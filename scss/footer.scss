@@ -25,3 +25,15 @@
     padding-right: 10px;
   }
 }
+
+@media only screen and (max-width: $breakpoint) {
+
+  .footer {
+    height: 200px;
+
+    .footer-copyright {
+      align-self: center;
+      margin-top: 30px;
+    }
+  }
+}

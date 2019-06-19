@@ -2,22 +2,19 @@
 @import 'sizes';
 
 @mixin card-size {
-  border-radius: 10px;
-  height: 300px;
   width: 200px;
 }
 
 .content-tech {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 30px;
-  padding: 0 400px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: auto;
   position: relative;
+  width: max-content;
 
   .tech {
     @include card-size;
     align-items: center;
-    background-color: $green;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,7 +24,6 @@
 
     &::after {
       @include card-size;
-      border: 1px solid $green;
       content: ' ';
       left: -10px;
       position: absolute;
@@ -59,6 +55,37 @@
     .tech-description {
       font-size: $text-small;
       text-align: center;
+    }
+
+    &:first-child {
+      align-self: center;
+      border-right: 2px solid $green;
+      grid-row: 1/3;
+      height: 600px;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint) {
+
+  .content-tech {
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 0 350px;
+    width: 100%;
+
+    .tech {
+      border-bottom: 2px solid $green;
+      padding-bottom: 20px;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:first-child {
+        border-right: none;
+        height: auto;
+      }
     }
   }
 }

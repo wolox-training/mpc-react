@@ -4,7 +4,7 @@
 .content-title {
   align-items: center;
   display: flex;
-  padding: 120px 0px 0px 350px;
+  padding: 150px 0px 0px 350px;
   position: relative;
 
   .logo-title {
@@ -15,7 +15,24 @@
   .title {
     color: black;
     font-size: $text-big;
-    left: 420px;
-    position: absolute;
+    position: relative;
+
+    &::before {
+      background: url('maquetado/assets/triangle.svg') no-repeat 100%;
+      content: '';
+      left: -55px;
+      min-height: 100px;
+      min-width: 75px;
+      position: absolute;
+      top: -35px;
+      z-index: -1;
+    }
+  }
+}
+
+@media (max-width: $breakpoint) {
+
+  .content-title {
+    padding: 170px 0px 30px 380px;
   }
 }

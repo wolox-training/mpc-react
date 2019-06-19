@@ -21,4 +21,11 @@
   .nav-text {
     font-size: $text-big;
   }
+
+  @media only screen and (max-width: $breakpoint) {
+
+    .nav-text {
+      display: none;
+    }
+  }
 }
