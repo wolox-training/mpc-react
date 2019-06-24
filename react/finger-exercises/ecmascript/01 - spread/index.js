@@ -1,10 +1,14 @@
 import { isArray } from './utils';
 
-export function min(array) {
-  if (isArray(array)) {
-    return Math.min(...array);
+export function min(...args) {
+  console.log(args);
+  if (args.length > 1) {
+    return Math.min(...args);
   }
-  return Math.min(array);
+  if (isArray(args[0])) {
+    return Math.min(...args[0]);
+  }
+  return Math.min(args);
 }
 
 export function copy() {
