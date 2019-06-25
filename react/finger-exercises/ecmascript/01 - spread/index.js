@@ -28,6 +28,6 @@ export function copy(args) {
 }
 
 export function reverseMerge(arr1, arr2) {
-  let concatArr = [...arr2, ...arr1];
-  return concatArr;
+  let mergedArr = [...arr2, ...arr1];
+  return mergedArr;
 }
