@@ -26,3 +26,8 @@ export function copy(args) {
   copy = Object.assign({}, args);
   return copy;
 }
+
+export function reverseMerge(arr1, arr2) {
+  let concatArr = [...arr2, ...arr1];
+  return concatArr;
+}
