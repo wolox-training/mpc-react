@@ -28,6 +28,12 @@ export function copy(args) {
 }
 
 export function reverseMerge(arr1, arr2) {
-  let mergedArr = [...arr2, ...arr1];
+  const mergedArr = [...arr2, ...arr1];
   return mergedArr;
+}
+
+export function filterAttribs(args) {
+
+  const { a, b, ...restArgs } = args;
+  return restArgs;
 }
