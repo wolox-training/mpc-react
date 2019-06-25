@@ -24,6 +24,5 @@ export function copy(args) {
   }
 
   copy = Object.assign({}, args);
-
   return copy;
 }
