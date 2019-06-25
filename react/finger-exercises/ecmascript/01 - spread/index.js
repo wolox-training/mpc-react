@@ -1,7 +1,7 @@
 import { isArray } from './utils';
 
 export function min(...args) {
-  //console.log(args);
+
   if (args.length === 0) {
     return undefined;
   }
@@ -14,9 +14,16 @@ export function min(...args) {
   return Math.min(args);
 }
 
-export function copy(obj) {
+export function copy(args) {
 
-  let copiedObj = Object.assign({}, obj);
+  let copy;
 
-  return copiedObj;
+  if (isArray(args)) {
+    copy = args.slice();
+    return copy;
+  }
+
+  copy = Object.assign({}, args);
+
+  return copy;
 }
