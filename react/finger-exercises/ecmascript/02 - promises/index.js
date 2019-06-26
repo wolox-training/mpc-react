@@ -19,6 +19,7 @@ export function delay(time) {
 delay(500)
   .then(delayedTime => console.log(delayedTime));
 
-export function asyncDelay() {
-
+export async function asyncDelay(time) {
+  const promise2 = await delay(time);
+  return promise2;
 }
