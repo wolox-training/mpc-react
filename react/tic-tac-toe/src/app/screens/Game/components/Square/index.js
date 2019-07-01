@@ -4,17 +4,17 @@ import styles from './styles.module.scss';
 
 
 class Square extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null,
-    };
+  state = {
+    value: null,
   }
 
   render() {
+    const { value } = this.state;
     return (
-      <button type="button" className={styles.square} onClick={() => { alert('click'); }}>
-        {this.props.value}
+      <button type="button"
+        className={styles.square}
+        onClick={() => this.setState({ value: 'X', })}>
+        {value}
       </button>
     );
   }
