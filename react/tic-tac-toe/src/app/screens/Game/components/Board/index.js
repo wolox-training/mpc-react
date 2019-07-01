@@ -5,6 +5,9 @@ import Square from '../Square';
 import styles from './styles.module.scss';
 
 class Board extends Component {
+  state = {
+    squeares: Array(9).fill(null),
+  }
   renderSquare(i) {
     return <Square value={i} />;
   }
