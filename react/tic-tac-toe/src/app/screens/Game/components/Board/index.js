@@ -6,10 +6,13 @@ import styles from './styles.module.scss';
 
 class Board extends Component {
   state = {
-    squeares: Array(9).fill(null),
+    squares: Array(9).fill(null),
   }
-  renderSquare(i) {
-    return <Square value={i} />;
+
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares: squares});
   }
 
   render() {
@@ -18,19 +21,19 @@ class Board extends Component {
       <div>
         <div className={styles.status}>{status}</div>
         <div className={styles.boardRow}>
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
+          <Square value={ this.state.squares[0]} index={0} onClick={this.handleClick} />
+          <Square value={ this.state.squares[1]} index={1} onClick={this.handleClick} />
+          <Square value={ this.state.squares[2]} index={2} onClick={this.handleClick} />
         </div>
         <div className={styles.boardRow}>
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
+          <Square value={ this.state.squares[3]} index={3} onClick={this.handleClick} />
+          <Square value={ this.state.squares[4]} index={4} onClick={this.handleClick} />
+          <Square value={ this.state.squares[5]} index={5} onClick={this.handleClick} />
         </div>
         <div className={styles.boardRow}>
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
+          <Square value={ this.state.squares[6]} index={6} onClick={this.handleClick} />
+          <Square value={ this.state.squares[7]} index={7} onClick={this.handleClick} />
+          <Square value={ this.state.squares[8]} index={8} onClick={this.handleClick} />
         </div>
       </div>
     );
