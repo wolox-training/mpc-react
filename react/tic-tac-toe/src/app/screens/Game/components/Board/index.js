@@ -7,15 +7,15 @@ import styles from './styles.module.scss';
 class Board extends Component {
   state = {
     squares: Array(9).fill(null),
-    xIsNext: true,
-  }
+    xIsNext: true
+  };
 
   handleClick = (i) => {
     const squares = this.state.squares.slice();
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       squares: squares,
-      xIsNext: !this.state.xIsNext,
+      xIsNext: !this.state.xIsNext
     });
   }
 
