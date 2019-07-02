@@ -5,7 +5,7 @@ import Square from '../Square';
 
 import styles from './styles.module.scss';
 
-function Board({ status, squares, handleClick }) {
+function Board ({ status, squares, handleClick }) {
   return (
     <div>
       <div className={styles.status}>{status}</div>
@@ -46,5 +46,3 @@ export function calculateWinner(squares) {
   }
   return null;
 }
-
-export default Board;
