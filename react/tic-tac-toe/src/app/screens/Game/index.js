@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
+import { calculateWinner } from '../utils';
+
 import styles from './styles.module.scss';
-import Board, { calculateWinner } from './components/Board';
+import Board from './components/Board';
 
 class Game extends Component {
   state = {
