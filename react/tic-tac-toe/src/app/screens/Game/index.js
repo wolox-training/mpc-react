@@ -29,12 +29,12 @@ class Game extends Component {
     this.setState({
       history: history.concat([
         {
-          squares: squares
+          squares
         }
       ]),
       xIsNext: !this.state.xIsNext
     });
-  }
+  };
 
   render() {
     const { history } = this.state;
@@ -54,7 +54,6 @@ class Game extends Component {
           <Board status={status} squares={current.squares} handleClick={this.handleClick} />
         </div>
         <div className={styles.gameInfo}>
-          {/* <div>{status}</div> */}
           <ol>{/* TODO */}</ol>
         </div>
       </div>

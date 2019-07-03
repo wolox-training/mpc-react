@@ -1,31 +1,37 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import Square from '../Square';
 
 import styles from './styles.module.scss';
 
-function Board ({ status, squares, handleClick }) {
-  return (
-    <div>
-      <div className={styles.status}>{status}</div>
-      <div className={styles.boardRow}>
-        <Square value={squares[0]} index={0} onClick={handleClick} />
-        <Square value={squares[1]} index={1} onClick={handleClick} />
-        <Square value={squares[2]} index={2} onClick={handleClick} />
-      </div>
-      <div className={styles.boardRow}>
-        <Square value={squares[3]} index={3} onClick={handleClick} />
-        <Square value={squares[4]} index={4} onClick={handleClick} />
-        <Square value={squares[5]} index={5} onClick={handleClick} />
-      </div>
-      <div className={styles.boardRow}>
-        <Square value={squares[6]} index={6} onClick={handleClick} />
-        <Square value={squares[7]} index={7} onClick={handleClick} />
-        <Square value={squares[8]} index={8} onClick={handleClick} />
-      </div>
-    </div>
-  );
+class Board extends Component {
+  renderSquare = (index, value) => <Square value={value} onClick={() => this.props.handleClick(index)} />;
+
+  render() {
+    const { squares, status } = this.props;
+    const { boardRow } = styles;
+    return (
+      <Fragment>
+        <div className={styles.status}>{status}</div>
+        <div className={boardRow}>
+          {this.renderSquare(0, squares[0])}
+          {this.renderSquare(1, squares[1])}
+          {this.renderSquare(2, squares[2])}
+        </div>
+        <div className={styles.boardRow}>
+          {this.renderSquare(3, squares[3])}
+          {this.renderSquare(4, squares[4])}
+          {this.renderSquare(5, squares[5])}
+        </div>
+        <div className={styles.boardRow}>
+          {this.renderSquare(6, squares[6])}
+          {this.renderSquare(7, squares[7])}
+          {this.renderSquare(8, squares[8])}
+        </div>
+      </Fragment>
+    );
+  }
 }
 
 Board.propTypes = {
