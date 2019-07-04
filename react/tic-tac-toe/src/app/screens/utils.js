@@ -8,3 +8,13 @@ export function calculateWinner(squares) {
   }
   return null;
 }
+
+export function getWinner(winner, xIsNext) {
+  let status = null;
+  if (winner) {
+    status = `Winner:  ${winner}`;
+  } else {
+    status = `Next player:  ${xIsNext ? 'X' : 'O'}`;
+  }
+  return status;
+}

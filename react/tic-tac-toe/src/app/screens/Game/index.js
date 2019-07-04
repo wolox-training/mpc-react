@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { calculateWinner } from '../utils';
+import { calculateWinner, getWinner } from '../utils';
 
 import styles from './styles.module.scss';
 import Board from './components/Board';
@@ -39,16 +39,10 @@ class Game extends Component {
   };
 
   render() {
-    const { history } = this.state;
+    const { history, winner, xIsNext } = this.state;
     const current = history[history.length - 1];
-    const {winner} = this.state;
 
-    let status;
-    if (winner) {
-      status = `Winner:  ${winner}`;
-    } else {
-      status = `Next player:  ${this.state.xIsNext ? 'X' : 'O'}`;
-    }
+    const status = getWinner(winner, xIsNext);
 
     return (
       <div className={styles.game}>

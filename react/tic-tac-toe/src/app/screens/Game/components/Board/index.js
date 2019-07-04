@@ -14,7 +14,7 @@ class Board extends Component {
 
   renderRow = rowIndex => (
     <div key={rowIndex} className={styles.boardRow}>
-      {indexes.map(i => this.renderSquare(rowIndex * 3 + i))}
+      {indexes && indexes.map(i => this.renderSquare(rowIndex * 3 + i))}
     </div>
   );
 
@@ -23,7 +23,7 @@ class Board extends Component {
     return (
       <Fragment>
         <div className={styles.status}>{status}</div>
-        {indexes.map(i => this.renderRow(i))}
+        {indexes && indexes.map(i => this.renderRow(i))}
       </Fragment>
     );
   }
@@ -32,7 +32,7 @@ class Board extends Component {
 Board.propTypes = {
   handleClick: PropTypes.func.isRequired,
   squares: PropTypes.arrayOf(PropTypes.string).isRequired,
-  status: PropTypes.string.isRequired
+  status: PropTypes.string
 };
 
 export default Board;
