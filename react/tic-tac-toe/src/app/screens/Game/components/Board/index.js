@@ -5,30 +5,19 @@ import Square from '../Square';
 
 import styles from './styles.module.scss';
 
+const indexes = [0, 1, 2];
+
 class Board extends Component {
-  renderSquare = (index, value) => <Square value={value} onClick={() => this.props.handleClick(index)} />;
+  renderSquare = (index) => <Square value={this.props.squares[index]} onClick={() => this.props.handleClick(index)} />;
+
+  renderRow = (rowIndex) => <div className={styles.boardRow}>{indexes.map(i => this.renderSquare(rowIndex*3 + i))}</div>;
 
   render() {
-    const { squares, status } = this.props;
-    const { boardRow } = styles;
+    const { status } = this.props;
     return (
       <Fragment>
         <div className={styles.status}>{status}</div>
-        <div className={boardRow}>
-          {this.renderSquare(0, squares[0])}
-          {this.renderSquare(1, squares[1])}
-          {this.renderSquare(2, squares[2])}
-        </div>
-        <div className={styles.boardRow}>
-          {this.renderSquare(3, squares[3])}
-          {this.renderSquare(4, squares[4])}
-          {this.renderSquare(5, squares[5])}
-        </div>
-        <div className={styles.boardRow}>
-          {this.renderSquare(6, squares[6])}
-          {this.renderSquare(7, squares[7])}
-          {this.renderSquare(8, squares[8])}
-        </div>
+        {indexes.map(i => this.renderRow(i))}
       </Fragment>
     );
   }

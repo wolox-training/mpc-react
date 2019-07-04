@@ -12,34 +12,36 @@ class Game extends Component {
         squares: Array(9).fill(null)
       }
     ],
-    xIsNext: true
+    xIsNext: true,
+    winner: null
   };
 
   handleClick = i => {
-    const { history } = this.state;
+    const { history, winner, xIsNext } = this.state;
     const current = history[history.length - 1];
     const squares = current.squares.slice();
 
-    if (calculateWinner(squares) || squares[i]) {
+    if (winner || squares[i]) {
       return;
     }
-
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = xIsNext ? 'X' : 'O';
+    const winnerCalculate = calculateWinner(squares);
 
     this.setState({
+      winner: winnerCalculate,
       history: history.concat([
         {
           squares
         }
       ]),
-      xIsNext: !this.state.xIsNext
+      xIsNext: !xIsNext
     });
   };
 
   render() {
     const { history } = this.state;
     const current = history[history.length - 1];
-    const winner = current && calculateWinner(current.squares);
+    const {winner} = this.state;
 
     let status;
     if (winner) {
