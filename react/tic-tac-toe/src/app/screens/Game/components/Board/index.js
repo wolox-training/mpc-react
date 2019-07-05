@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import Square from '../Square';
 
 import styles from './styles.module.scss';
-
-const indexes = [0, 1, 2];
+import { indexes } from './constants';
 
 class Board extends Component {
   renderSquare = index => (
