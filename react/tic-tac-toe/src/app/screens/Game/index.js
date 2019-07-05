@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { calculateWinner, getWinner } from '../utils';
+import { calculateWinner, getWinner } from './utils';
 
 import styles from './styles.module.scss';
 import Board from './components/Board';
