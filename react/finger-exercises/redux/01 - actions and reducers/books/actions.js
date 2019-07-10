@@ -9,7 +9,8 @@ related to @@BOOKS for easier debugging.
 */
 export const actions = {
   SET_FAVORITE_BOOK: '@@BOOKS/SET_FAVORITE_BOOK',
-  ADD_READ_BOOK: '@@BOOKS/ADD_READ_BOOK'
+  ADD_READ_BOOK: '@@BOOKS/ADD_READ_BOOK',
+  MOST_HATED_BOOK: '@@BOOKS/MOST_HATED_BOOK'
 };
 
 /*
@@ -29,6 +30,13 @@ export default {
     type: actions.ADD_READ_BOOK,
     payload: {
       title
+    }
+  }),
+
+  setMostHatedBook: title => ({
+    type: actions.MOST_HATED_BOOK,
+    payload: {
+      mostHatedBook: title
     }
   })
 };
