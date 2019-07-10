@@ -18,6 +18,13 @@ The purpose of this object is to have all the action-creating logic in a single
 place. All actions types must only be used inside an actionCreator.
 */
 export default {
+  setFavoriteBook: title => ({
+    type: actions.SET_FAVORITE_BOOK,
+    payload: {
+      favoriteBook: title
+    }
+  }),
+
   addReadBook: title => ({
     type: actions.ADD_READ_BOOK,
     payload: {
