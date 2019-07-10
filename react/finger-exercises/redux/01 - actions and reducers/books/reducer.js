@@ -11,7 +11,7 @@ don't add it to the initialState, they'll probably won't notice it's there.
 */
 const initialState = {
   favoriteBook: null,
-  readBooks: ['Moby Dick']
+  readBooks: ['Moby Dick', 'The Lord of the Rings']
 };
 
 /*
