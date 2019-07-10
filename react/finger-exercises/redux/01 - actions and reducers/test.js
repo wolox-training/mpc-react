@@ -54,7 +54,7 @@ describe('Actions', () => {
     expect(store.getState().books).not.toHaveProperty(['email', 'token']);
   });
 
-  xit('handle unknown action', () => {
+  it('handle unknown action', () => {
     /*
     What if someone dispatches an action we don't know how to handle?
     We ignore it!
