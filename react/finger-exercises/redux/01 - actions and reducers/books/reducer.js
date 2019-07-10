@@ -27,7 +27,7 @@ function reducer(state = initialState, action) {
         ...state,
         favoriteBook: action.payload.favoriteBook
       };
-    case actions.MOST_HATED_BOOK:
+    case actions.SET_MOST_HATED_BOOK:
       return {
         ...state,
         mostHatedBook: action.payload.mostHatedBook
