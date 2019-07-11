@@ -1,7 +1,6 @@
 import { isArray } from './utils';
 
 export function min(...args) {
-
   if (args.length === 0) {
     return undefined;
   }
@@ -15,7 +14,6 @@ export function min(...args) {
 }
 
 export function copy(args) {
-
   let copy;
 
   if (isArray(args)) {
@@ -23,7 +21,7 @@ export function copy(args) {
     return copy;
   }
 
-  copy = Object.assign({}, args);
+  copy = { ...args };
   return copy;
 }
 
@@ -33,7 +31,6 @@ export function reverseMerge(arr1, arr2) {
 }
 
 export function filterAttribs(args) {
-
   const { a, b, ...restArgs } = args;
   return restArgs;
 }
