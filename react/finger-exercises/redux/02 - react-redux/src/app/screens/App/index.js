@@ -66,7 +66,7 @@ class App extends Component {
         <Navbar />
         <div className={styles.container}>
           <Search onSearch={this.onSearch} />
-          {books.length ? (
+          {books && books.length ? (
             books.map(this.renderBooks)
           ) : (
             <div className={styles.noData}>
@@ -74,7 +74,7 @@ class App extends Component {
             </div>
           )}
         </div>
-        {bookSelected.length && (
+        {bookSelected && bookSelected.length && (
           <ShoppingCart data={bookSelected} addItem={this.addItem} removeItem={this.removeItem} />
         )}
         <Footer />
