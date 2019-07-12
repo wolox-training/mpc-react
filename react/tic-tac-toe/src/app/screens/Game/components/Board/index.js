@@ -7,9 +7,10 @@ import styles from './styles.module.scss';
 import { indexes } from './constants';
 
 class Board extends Component {
-  renderSquare = index => (
-    <Square key={index} value={this.props.squares[index]} index={index} onClick={this.props.handleClick} />
-  );
+  renderSquare = index => {
+    const { squares, handleClick } = this.props;
+    return <Square key={index} value={squares[index]} index={index} onClick={handleClick} />;
+  };
 
   renderRow = rowIndex => (
     <div key={rowIndex} className={styles.boardRow}>
