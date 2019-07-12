@@ -23,7 +23,7 @@ class Board extends Component {
     return (
       <Fragment>
         <div className={styles.status}>{status}</div>
-        {indexes && indexes.map(i => this.renderRow(i))}
+        {indexes && indexes.map(this.renderRow)}
       </Fragment>
     );
   }
