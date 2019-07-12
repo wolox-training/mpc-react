@@ -9,6 +9,5 @@ export function calculateWinner(squares) {
   return null;
 }
 
-export const getWinner = (winner, xIsNext, status) => {
-  return winner ? (status = `Winner:  ${winner}`) : (status = `Next player:  ${xIsNext ? 'X' : 'O'}`);
-};
+export const getWinner = (winner, xIsNext) =>
+  winner ? `Winner:  ${winner}` : `Next player:  ${xIsNext ? 'X' : 'O'}`;
