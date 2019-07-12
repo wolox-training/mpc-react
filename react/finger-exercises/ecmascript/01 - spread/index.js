@@ -17,7 +17,7 @@ export function copy(args) {
   let copy;
 
   if (isArray(args)) {
-    copy = args.slice();
+    copy = [...args];
     return copy;
   }
 
