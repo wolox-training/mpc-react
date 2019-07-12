@@ -14,15 +14,8 @@ export function min(...args) {
 }
 
 export function copy(args) {
-  let copy;
 
-  if (isArray(args)) {
-    copy = [...args];
-    return copy;
-  }
-
-  copy = { ...args };
-  return copy;
+  return isArray(args) ? [...args] : { ...args };
 }
 
 export function reverseMerge(arr1, arr2) {
