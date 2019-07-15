@@ -4,6 +4,8 @@ import { calculateWinner, getWinner } from './utils';
 import styles from './styles.module.scss';
 import Board from './components/Board';
 
+const Spinner = require('react-spinkit');
+
 class Game extends Component {
   state = {
     history: [
@@ -12,7 +14,8 @@ class Game extends Component {
       }
     ],
     xIsNext: true,
-    winner: null
+    winner: null,
+    stepNumber: 0
   };
 
   handleClick = i => {
@@ -33,15 +36,35 @@ class Game extends Component {
           squares
         }
       ]),
-      xIsNext: !xIsNext
+      xIsNext: !xIsNext,
+      stepNumber: history.length
     });
   };
 
+  jumpTo(step) {
+    this.setState({
+      stepNumber: step,
+      xIsNext: step % 2 === 0
+    });
+  }
+
   render() {
     const { history, winner, xIsNext } = this.state;
-    const current = history[history.length - 1];
+    // const current = history[history.length - 1];
 
     const status = getWinner(winner, xIsNext);
+    // const history = history.slice(0, this.state.stepNumber + 1);
+    const current = history[this.state.stepNumber];
+    // const winner = current && calculateWinner(current.squares);
+
+    const moves = history.map((step, move) => {
+      const desc = move ? `Go to move #  ${move}` : 'Go to game start';
+      return (
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        </li>
+      );
+    });
 
     return (
       <div className={styles.game}>
@@ -49,7 +72,11 @@ class Game extends Component {
           <Board status={status} squares={current.squares} handleClick={this.handleClick} />
         </div>
         <div className={styles.gameInfo}>
-          <ol>{/* TODO */}</ol>
+          {/* <div>{status}</div> */}
+          <ol>{moves}</ol>
+        </div>
+        <div className={styles.gameLoader}>
+          <Spinner name="three-bounce" color="fuchsia" />
         </div>
       </div>
     );
