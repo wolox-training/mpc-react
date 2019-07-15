@@ -7,12 +7,15 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case actions.LOG_IN:
+    case actions.LOG_IN: {
+      const { email, token } = action.payload;
       return {
         ...state,
-        email: action.payload.email,
-        token: action.payload.token
+        email,
+        token
       };
+    }
+
     default:
       return state;
   }
