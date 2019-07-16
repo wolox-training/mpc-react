@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
 import MatchesService from '../../../../../services/MatchesService';
-
-import styles from './styles.module.scss';
+import { getWinnerClass } from '../../utils';
 
 const Spinner = require('react-spinkit');
-
-const getWinnerClass = isWinner => (isWinner ? styles.winner : '');
 
 class Matches extends Component {
   state = {
