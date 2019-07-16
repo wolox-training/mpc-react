@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import MatchesService from '../../../../../services/MatchesService';
 import { getWinnerClass } from '../../utils';
@@ -19,14 +19,15 @@ class Matches extends Component {
   }
 
   render() {
+    const { loading, data } = this.state;
     return (
-      <div>
+      <Fragment>
         <h1>Match History</h1>
-        {this.state.loading ? (
+        {loading ? (
           <Spinner name="three-bounce" color="#00ADEE" />
         ) : (
           <ol>
-            {this.state.data.map(item => (
+            {data.map(item => (
               <li key={item.id}>
                 <span className={getWinnerClass(item.winner === 'player_one')}>{item.player_one}</span> -{' '}
                 <span className={getWinnerClass(item.winner === 'player_two')}>{item.player_two}</span>
@@ -34,7 +35,7 @@ class Matches extends Component {
             ))}
           </ol>
         )}
-      </div>
+      </Fragment>
     );
   }
 }
