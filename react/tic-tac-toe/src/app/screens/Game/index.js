@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
+import { calculateWinner, getWinner } from './utils';
 import styles from './styles.module.scss';
-import Board, { calculateWinner } from './components/Board';
+import Board from './components/Board';
 
 class Game extends Component {
   state = {
@@ -11,42 +12,44 @@ class Game extends Component {
       }
     ],
     stepNumber: 0,
-    xIsNext: true
+    xIsNext: true,
+    winner: null
   };
 
   handleClick = i => {
-    const { history } = this.state;
+    const { history, winner, xIsNext } = this.state;
     const current = history[history.length - 1];
     const squares = current.squares.slice();
 
-    if (calculateWinner(squares) || squares[i]) {
+    if (winner || squares[i]) {
       return;
     }
-
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = xIsNext ? 'X' : 'O';
+    const winnerCalculate = calculateWinner(squares);
 
     this.setState({
+      winner: winnerCalculate,
       history: history.concat([
         {
-          squares: squares
+          squares
         }
       ]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
+
+      xIsNext: !xIsNext
     });
-  }
+  };
 
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) === 0,
+      xIsNext: step % 2 === 0
     });
   }
 
   render() {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    const current = history[this.state.stepNumber];
-    const winner = current && calculateWinner(current.squares);
+    const { history, winner, xIsNext } = this.state;
+    const current = history[history.length - 1];
 
     const moves = history.map((step, move) => {
       const desc = move ? `Go to move #  ${move}` : 'Go to game start';
@@ -57,12 +60,7 @@ class Game extends Component {
       );
     });
 
-    let status;
-    if (winner) {
-      status = `Winner:  ${winner}`;
-    } else {
-      status = `Next player:  ${this.state.xIsNext ? 'X' : 'O'}`;
-    }
+    const status = getWinner(winner, xIsNext);
 
     return (
       <div className={styles.game}>
@@ -70,8 +68,7 @@ class Game extends Component {
           <Board status={status} squares={current.squares} handleClick={this.handleClick} />
         </div>
         <div className={styles.gameInfo}>
-          {/* <div>{status}</div> */}
-          <ol>{ moves }</ol>
+          <ol>{moves}</ol>
         </div>
       </div>
     );
