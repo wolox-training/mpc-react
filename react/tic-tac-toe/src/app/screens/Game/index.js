@@ -5,8 +5,6 @@ import styles from './styles.module.scss';
 import Board from './components/Board';
 import Matches from './components/Matches';
 
-const Spinner = require('react-spinkit');
-
 class Game extends Component {
   state = {
     history: [
@@ -78,7 +76,6 @@ class Game extends Component {
         </div>
         <div className={styles.gameLoader}>
           <Matches />
-          <Spinner name="three-bounce" color="fuchsia" />
         </div>
       </div>
     );
