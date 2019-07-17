@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import actionsCreators from '../../../redux/game/actions';
 
 import { calculateWinner, getWinner } from './utils';
 import styles from './styles.module.scss';
@@ -12,9 +14,9 @@ class Game extends Component {
         squares: Array(9).fill(null)
       }
     ],
+    stepNumber: 0,
     xIsNext: true,
-    winner: null,
-    stepNumber: 0
+    winner: null
   };
 
   handleClick = i => {
@@ -26,6 +28,7 @@ class Game extends Component {
       return;
     }
     squares[i] = xIsNext ? 'X' : 'O';
+
     const winnerCalculate = calculateWinner(squares);
 
     this.setState({
@@ -35,8 +38,8 @@ class Game extends Component {
           squares
         }
       ]),
-      xIsNext: !xIsNext,
-      stepNumber: history.length
+      stepNumber: history.length,
+      xIsNext: !xIsNext
     });
   };
 
@@ -77,4 +80,15 @@ class Game extends Component {
   }
 }
 
-export default Game;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  addMove: i => dispatch(actionsCreators.addMove(i)),
+  removeMove: step => dispatch(actionsCreators.removeMove(step)),
+  setWinner: winner => dispatch(actionsCreators.setWinner(winner))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Game);
