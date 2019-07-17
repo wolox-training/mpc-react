@@ -1,16 +1,21 @@
 export const actions = {
-  ADD_GAME: '@@GAME/ADD_GAME',
-  REMOVE_GAME: '@@GAME/REMOVE_GAME'
+  ADD_MOVE: '@@GAME/ADD_MOVE',
+  REMOVE_MOVE: '@@GAME/REMOVE_MOVE',
+  SET_WINNER: '@@GAME/SET_WINNER'
 };
 
 const actionsCreators = {
-  addGame: (move) => ({
+  addMove: i => ({
     type: actions.ADD_GAME,
-    payload: move
+    payload: i
   }),
-  removeGame: (move) => ({
+  removeMove: step => ({
     type: actions.REMOVE_GAME,
-    payload: move
+    payload: step
+  }),
+  setWinner: winner => ({
+    type: actions.SET_WINNER,
+    payload: winner
   })
 };
 
