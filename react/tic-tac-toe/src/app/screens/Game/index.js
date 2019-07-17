@@ -25,6 +25,7 @@ class Game extends Component {
       return;
     }
     squares[i] = xIsNext ? 'X' : 'O';
+
     const winnerCalculate = calculateWinner(squares);
 
     this.setState({
@@ -35,7 +36,6 @@ class Game extends Component {
         }
       ]),
       stepNumber: history.length,
-
       xIsNext: !xIsNext
     });
   };
@@ -49,7 +49,7 @@ class Game extends Component {
 
   render() {
     const { history, winner, xIsNext } = this.state;
-    const current = history[history.length - 1];
+    const current = history[this.state.stepNumber];
 
     const moves = history.map((step, move) => {
       const desc = move ? `Go to move #  ${move}` : 'Go to game start';
