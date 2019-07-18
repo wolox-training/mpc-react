@@ -5,12 +5,12 @@ export const actions = {
 };
 
 const actionsCreators = {
-  addMove: i => ({
-    type: actions.ADD_GAME,
-    payload: i
+  addMove: move => ({
+    type: actions.ADD_MOVE,
+    payload: move
   }),
   removeMove: step => ({
-    type: actions.REMOVE_GAME,
+    type: actions.REMOVE_MOVE,
     payload: step
   }),
   setWinner: winner => ({
