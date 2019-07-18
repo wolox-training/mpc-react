@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { func, bool, string, number, arrayOf } from 'prop-types';
 
 import actionsCreators from '../../../redux/game/actions';
 
@@ -28,7 +29,7 @@ class Game extends Component {
 
   render() {
     const { winner, xIsNext, stepNumber, removeMove } = this.props;
-    const history= this.props.history.slice(0, stepNumber + 1);
+    const history = this.props.history.slice(0, stepNumber + 1);
     const status = getWinner(winner, xIsNext);
     const current = history[stepNumber];
 
@@ -58,6 +59,16 @@ class Game extends Component {
     );
   }
 }
+
+Game.propTypes = {
+  addMove: func,
+  history: arrayOf(string),
+  removeMove: func,
+  setWinner: func,
+  stepNumber: number,
+  winner: string,
+  xIsNext: bool
+};
 
 const mapStateToProps = state => ({
   history: state.history,
