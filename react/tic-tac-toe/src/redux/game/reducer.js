@@ -1,11 +1,7 @@
 import { actions } from './actions';
 
 const initialState = {
-  history: [
-    {
-      squares: Array(9).fill(null)
-    }
-  ],
+  history: [Array(9).fill(null)],
   stepNumber: 0,
   xIsNext: true,
   winner: null
@@ -16,12 +12,15 @@ function reducer(state = initialState, action) {
     case actions.ADD_MOVE:
       return {
         ...state,
-        i: action.payload
+        history: state.history.concat([action.payload]),
+        stepNumber: state.history.length,
+        xIsNext: !state.xIsNext
       };
     case actions.REMOVE_MOVE:
       return {
         ...state,
-        step: action.payload
+        stepNumber: action.payload,
+        xIsNext: action.payload % 2 === 0
       };
     case actions.SET_WINNER:
       return {
