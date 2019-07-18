@@ -27,7 +27,8 @@ class Game extends Component {
   };
 
   render() {
-    const { history, winner, xIsNext, stepNumber, removeMove } = this.props;
+    const { winner, xIsNext, stepNumber, removeMove } = this.props;
+    const history= this.props.history.slice(0, stepNumber + 1);
     const status = getWinner(winner, xIsNext);
     const current = history[stepNumber];
 
