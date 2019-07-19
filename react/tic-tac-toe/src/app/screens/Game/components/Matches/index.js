@@ -11,7 +11,7 @@ class Matches extends Component {
   };
 
   componentDidMount() {
-    const match = MatchesService.getMatches();
+    const match = MatchesService.getMatch();
     match.then(result => {
       this.setState({ data: result.data, loading: false });
     });
