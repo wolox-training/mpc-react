@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { calculateWinner, getWinner } from './utils';
 import styles from './styles.module.scss';
 import Board from './components/Board';
+import Matches from './components/Matches';
 
 class Game extends Component {
   state = {
@@ -11,9 +12,9 @@ class Game extends Component {
         squares: Array(9).fill(null)
       }
     ],
-    stepNumber: 0,
     xIsNext: true,
-    winner: null
+    winner: null,
+    stepNumber: 0
   };
 
   handleClick = i => {
@@ -35,8 +36,8 @@ class Game extends Component {
           squares
         }
       ]),
-      stepNumber: history.length,
-      xIsNext: !xIsNext
+      xIsNext: !xIsNext,
+      stepNumber: history.length
     });
   };
 
@@ -49,6 +50,7 @@ class Game extends Component {
 
   render() {
     const { history, winner, xIsNext } = this.state;
+    const status = getWinner(winner, xIsNext);
     const current = history[this.state.stepNumber];
 
     const moves = history.map((step, move) => {
@@ -60,8 +62,6 @@ class Game extends Component {
       );
     });
 
-    const status = getWinner(winner, xIsNext);
-
     return (
       <div className={styles.game}>
         <div className={styles.gameBoard}>
@@ -69,6 +69,9 @@ class Game extends Component {
         </div>
         <div className={styles.gameInfo}>
           <ol>{moves}</ol>
+        </div>
+        <div className={styles.gameLoader}>
+          <Matches />
         </div>
       </div>
     );
