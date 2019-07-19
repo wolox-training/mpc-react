@@ -12,7 +12,9 @@ function reducer(state = initialState, action) {
         ...state,
         data: action.payload,
         loading: !state.loading
-      }
+      };
+    default:
+      return state;
   }
 }
 

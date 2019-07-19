@@ -3,9 +3,9 @@ export const actions = {
 };
 
 const actionsCreators = {
-  getMatches: () => ({
+  getMatches: data => ({
     type: actions.GET_MATCHES,
-    payload: DATA
+    payload: data
   })
 };
 
