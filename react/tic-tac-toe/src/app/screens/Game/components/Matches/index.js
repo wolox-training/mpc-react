@@ -20,14 +20,15 @@ class Matches extends Component {
   }
 
   render() {
+    const { loading, data } = this.props;
     return (
       <div>
         <h1>Match History</h1>
-        {this.props.loading ? (
+        {loading && loading ? (
           <Spinner name="three-bounce" color="#00ADEE" />
         ) : (
           <ol>
-            {this.props.data.map(item => (
+            {data.map(item => (
               <li key={item.id}>
                 <span className={getWinnerClass(item.winner === 'player_one')}>{item.player_one}</span> -{' '}
                 <span className={getWinnerClass(item.winner === 'player_two')}>{item.player_two}</span>
