@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import actionsCreators from '../../../redux/game/actions';
 import MatchesService from '../../../../../services/MatchesService';
 
 import styles from './styles.module.scss';
@@ -42,4 +44,13 @@ class Matches extends Component {
   }
 }
 
-export default Matches;
+const mapStateToProps = state => {
+  data: state.matches.data,
+  loading: state.matches.loading
+};
+
+const mapDispatchToProps = dispatch => {
+  getMatches: data => dispatch(actionsCreators.getMatches(data))
+}
+
+export default connect()(Matches);
