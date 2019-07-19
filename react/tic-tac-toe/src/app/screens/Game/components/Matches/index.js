@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import Spinner from 'react-spinkit';
 
 import MatchesService from '../../../../../services/MatchesService';
 import { getWinnerClass } from '../../utils';
-
-const Spinner = require('react-spinkit');
 
 class Matches extends Component {
   state = {
