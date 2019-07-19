@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { arrayOf, bool, func, shape, string } from 'prop-types';
 import { connect } from 'react-redux';
 
-import actionsCreators from '../../../redux/game/actions';
+import actionsCreators from '../../../../../redux/matches/actions';
 import MatchesService from '../../../../../services/MatchesService';
 
 import styles from './styles.module.scss';
@@ -39,13 +40,22 @@ class Matches extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  data: state.matches.data,
-  loading: state.matches.loading
+Matches.propTypes = {
+  getMatches: func.isRequired,
+  data: arrayOf(shape({ player_one: string, player_two: string })),
+  loading: bool
 };
 
-const mapDispatchToProps = dispatch => {
-  getMatches: data => dispatch(actionsCreators.getMatches(data))
-}
+const mapStateToProps = state => ({
+  data: state.matches.data,
+  loading: state.matches.loading
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Matches);
+const mapDispatchToProps = dispatch => ({
+  getMatches: data => dispatch(actionsCreators.getMatches(data))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Matches);
