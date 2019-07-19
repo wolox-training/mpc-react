@@ -5,3 +5,12 @@ export const bookSelectedPropType = shape({
   summary: string,
   quantity: number
 });
+
+export const booksPropTypes = shape({
+  id: number,
+  name: string,
+  author: string,
+  year: number,
+  image: string,
+  summary: string
+});

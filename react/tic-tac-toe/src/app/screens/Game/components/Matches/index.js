@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { arrayOf, bool, func, shape, string } from 'prop-types';
 import { connect } from 'react-redux';
+import Spinner from 'react-spinkit';
 
 import actionsCreators from '../../../../../redux/matches/actions';
 import MatchesService from '../../../../../services/MatchesService';
-
-import styles from './styles.module.scss';
-
-const Spinner = require('react-spinkit');
-
-const getWinnerClass = isWinner => (isWinner ? styles.winner : '');
+import { getWinnerClass } from '../../utils';
 
 class Matches extends Component {
   componentDidMount() {
-    const match = MatchesService.getMatches();
+    const match = MatchesService.getMatch();
     match.then(result => {
       this.props.getMatches(result.data);
     });
@@ -22,7 +18,7 @@ class Matches extends Component {
   render() {
     const { loading, data } = this.props;
     return (
-      <div>
+      <Fragment>
         <h1>Match History</h1>
         {loading && loading ? (
           <Spinner name="three-bounce" color="#00ADEE" />
@@ -36,7 +32,7 @@ class Matches extends Component {
             ))}
           </ol>
         )}
-      </div>
+      </Fragment>
     );
   }
 }
