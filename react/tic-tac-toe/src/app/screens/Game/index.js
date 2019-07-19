@@ -11,7 +11,6 @@ class Game extends Component {
         squares: Array(9).fill(null)
       }
     ],
-    stepNumber: 0,
     xIsNext: true,
     winner: null
   };
@@ -25,7 +24,6 @@ class Game extends Component {
       return;
     }
     squares[i] = xIsNext ? 'X' : 'O';
-
     const winnerCalculate = calculateWinner(squares);
 
     this.setState({
@@ -35,30 +33,13 @@ class Game extends Component {
           squares
         }
       ]),
-      stepNumber: history.length,
       xIsNext: !xIsNext
     });
   };
 
-  jumpTo(step) {
-    this.setState({
-      stepNumber: step,
-      xIsNext: step % 2 === 0
-    });
-  }
-
   render() {
     const { history, winner, xIsNext } = this.state;
-    const current = history[this.state.stepNumber];
-
-    const moves = history.map((step, move) => {
-      const desc = move ? `Go to move #  ${move}` : 'Go to game start';
-      return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
-      );
-    });
+    const current = history[history.length - 1];
 
     const status = getWinner(winner, xIsNext);
 
@@ -68,7 +49,7 @@ class Game extends Component {
           <Board status={status} squares={current.squares} handleClick={this.handleClick} />
         </div>
         <div className={styles.gameInfo}>
-          <ol>{moves}</ol>
+          <ol>{/* TODO */}</ol>
         </div>
       </div>
     );
