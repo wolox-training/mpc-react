@@ -26,6 +26,7 @@ class Game extends Component {
       return;
     }
     squares[i] = xIsNext ? 'X' : 'O';
+
     const winnerCalculate = calculateWinner(squares);
 
     this.setState({
