@@ -11,15 +11,10 @@ const Spinner = require('react-spinkit');
 const getWinnerClass = isWinner => (isWinner ? styles.winner : '');
 
 class Matches extends Component {
-  state = {
-    data: [],
-    loading: true
-  };
-
   componentDidMount() {
     const match = MatchesService.getMatches();
     match.then(result => {
-      this.setState({ data: result.data, loading: false });
+      this.props.getMatches(result.data);
     });
   }
 
@@ -27,11 +22,11 @@ class Matches extends Component {
     return (
       <div>
         <h1>Match History</h1>
-        {this.state.loading ? (
+        {this.props.loading ? (
           <Spinner name="three-bounce" color="#00ADEE" />
         ) : (
           <ol>
-            {this.state.data.map(item => (
+            {this.props.data.map(item => (
               <li key={item.id}>
                 <span className={getWinnerClass(item.winner === 'player_one')}>{item.player_one}</span> -{' '}
                 <span className={getWinnerClass(item.winner === 'player_two')}>{item.player_two}</span>
@@ -53,4 +48,4 @@ const mapDispatchToProps = dispatch => {
   getMatches: data => dispatch(actionsCreators.getMatches(data))
 }
 
-export default connect()(Matches);
+export default connect(mapStateToProps, mapDispatchToProps)(Matches);
