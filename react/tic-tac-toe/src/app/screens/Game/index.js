@@ -62,7 +62,7 @@ class Game extends Component {
 
 Game.propTypes = {
   addMove: func,
-  history: arrayOf(string),
+  history: arrayOf(arrayOf(string)),
   removeMove: func,
   setWinner: func,
   stepNumber: number,
