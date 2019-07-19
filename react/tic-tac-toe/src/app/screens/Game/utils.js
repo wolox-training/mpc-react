@@ -1,3 +1,5 @@
+import styles from '../Game/components/Matches/styles.module.scss';
+
 export function calculateWinner(squares) {
   const lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
   for (let i = 0; i < lines.length; i++) {
@@ -11,3 +13,5 @@ export function calculateWinner(squares) {
 
 export const getWinner = (winner, xIsNext) =>
   winner ? `Winner:  ${winner}` : `Next player:  ${xIsNext ? 'X' : 'O'}`;
+
+export const getWinnerClass = isWinner => (isWinner ? styles.winner : '');

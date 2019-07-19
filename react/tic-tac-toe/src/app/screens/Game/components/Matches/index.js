@@ -1,12 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import Spinner from 'react-spinkit';
 
 import MatchesService from '../../../../../services/MatchesService';
-
-import styles from './styles.module.scss';
-
-const Spinner = require('react-spinkit');
-
-const getWinnerClass = isWinner => (isWinner ? styles.winner : '');
+import { getWinnerClass } from '../../utils';
 
 class Matches extends Component {
   state = {
@@ -15,21 +11,22 @@ class Matches extends Component {
   };
 
   componentDidMount() {
-    const match = MatchesService.getMatches();
+    const match = MatchesService.getMatch();
     match.then(result => {
       this.setState({ data: result.data, loading: false });
     });
   }
 
   render() {
+    const { loading, data } = this.state;
     return (
-      <div>
+      <Fragment>
         <h1>Match History</h1>
-        {this.state.loading ? (
+        {loading ? (
           <Spinner name="three-bounce" color="#00ADEE" />
         ) : (
           <ol>
-            {this.state.data.map(item => (
+            {data.map(item => (
               <li key={item.id}>
                 <span className={getWinnerClass(item.winner === 'player_one')}>{item.player_one}</span> -{' '}
                 <span className={getWinnerClass(item.winner === 'player_two')}>{item.player_two}</span>
@@ -37,7 +34,7 @@ class Matches extends Component {
             ))}
           </ol>
         )}
-      </div>
+      </Fragment>
     );
   }
 }
