@@ -35,7 +35,7 @@ class Matches extends Component {
 
 Matches.propTypes = {
   getMatches: func.isRequired,
-  data: arrayOf(shape({ player_one: string, player_two: string })),
+  data: arrayOf(shape({ PLAYER_ONE: string, PLAYER_TWO: string })),
   loading: bool
 };
 
