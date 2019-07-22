@@ -6,8 +6,6 @@ import Spinner from 'react-spinkit';
 import actionsCreators from '../../../../../redux/matches/actions';
 import { getWinnerClass } from '../../utils';
 
-import { PLAYER_ONE, PLAYER_TWO } from './constants';
-
 class Matches extends Component {
   componentDidMount() {
     this.props.getMatches(this.props.data);
@@ -24,8 +22,8 @@ class Matches extends Component {
           <ol>
             {data.map(item => (
               <li key={item.id}>
-                <span className={getWinnerClass(item.winner === PLAYER_ONE)}>{item.player_one}</span> -{' '}
-                <span className={getWinnerClass(item.winner === PLAYER_TWO)}>{item.player_two}</span>
+                <span className={getWinnerClass(item.winner === 'player_one')}>{item.player_one}</span> -{' '}
+                <span className={getWinnerClass(item.winner === 'player_two')}>{item.player_two}</span>
               </li>
             ))}
           </ol>
