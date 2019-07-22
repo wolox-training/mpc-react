@@ -4,15 +4,11 @@ import { connect } from 'react-redux';
 import Spinner from 'react-spinkit';
 
 import actionsCreators from '../../../../../redux/matches/actions';
-import MatchesService from '../../../../../services/MatchesService';
 import { getWinnerClass } from '../../utils';
 
 class Matches extends Component {
   componentDidMount() {
-    const match = MatchesService.getMatch();
-    match.then(result => {
-      this.props.getMatches(result.data);
-    });
+    this.props.getMatches(this.props.data);
   }
 
   render() {
