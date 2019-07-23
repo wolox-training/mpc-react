@@ -16,7 +16,7 @@ class Matches extends Component {
     return (
       <Fragment>
         <h1>Match History</h1>
-        {loading && loading ? (
+        {loading ? (
           <Spinner name="three-bounce" color="#00ADEE" />
         ) : (
           <ol>

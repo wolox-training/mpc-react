@@ -4,7 +4,7 @@ export const actions = {
   SET_WINNER: '@@GAME/SET_WINNER'
 };
 
-const actionsCreators = {
+const actionsGame = {
   addMove: move => ({
     type: actions.ADD_MOVE,
     payload: move
@@ -19,4 +19,4 @@ const actionsCreators = {
   })
 };
 
-export default actionsCreators;
+export default actionsGame;
