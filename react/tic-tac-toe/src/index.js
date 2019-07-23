@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import App from './app';
 import Login from './app/screens/Login';
-
 import './config/i18n';
 import './scss/application.scss';
 import { register } from './serviceWorker';
