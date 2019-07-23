@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { func, bool, string, number, arrayOf } from 'prop-types';
 
-import actionsCreators from '../../../redux/game/actions';
+import actionsGame from '../../../redux/game/actions';
 
 import { calculateWinner, getWinner } from './utils';
 import styles from './styles.module.scss';
@@ -78,9 +78,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addMove: i => dispatch(actionsCreators.addMove(i)),
-  removeMove: step => dispatch(actionsCreators.removeMove(step)),
-  setWinner: winner => dispatch(actionsCreators.setWinner(winner))
+  addMove: i => dispatch(actionsGame.addMove(i)),
+  removeMove: step => dispatch(actionsGame.removeMove(step)),
+  setWinner: winner => dispatch(actionsGame.setWinner(winner))
 });
 
 export default connect(

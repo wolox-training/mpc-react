@@ -3,7 +3,7 @@ import { arrayOf, bool, func, shape, string } from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from 'react-spinkit';
 
-import actionsCreators from '../../../../../redux/matches/actions';
+import actionsMatches from '../../../../../redux/matches/actions';
 import { getWinnerClass } from '../../utils';
 
 class Matches extends Component {
@@ -45,7 +45,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMatches: data => dispatch(actionsCreators.getMatches(data))
+  getMatches: data => dispatch(actionsMatches.getMatches(data))
 });
 
 export default connect(
