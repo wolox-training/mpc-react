@@ -1,26 +1,15 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+
+import FormLogin from './components/FormLogin';
 
 class Login extends Component {
+  handleSubmit = values => {
+    window.alert(JSON.stringify(values, null, 4));
+  };
+
   render() {
-    return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <Field name="name" component="input" type="text"/>
-        </div>
-        <div>
-          <label>Email</label>
-          <Field name="name" component="input" type="text"/>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    );
+    return <FormLogin onSubmit={this.handleSubmit} />;
   }
 }
-
-Login = reduxForm({
-  form: 'login'
-})(Login);
 
 export default Login;
