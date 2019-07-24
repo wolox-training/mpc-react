@@ -4,10 +4,12 @@ import { reducer as formReducer } from 'redux-form';
 
 import game from './game/reducer';
 import matches from './matches/reducer';
+import login from './login/reducer';
 
 const reducer = combineReducers({
   game,
   matches,
+  login,
   form: formReducer
 });
 
