@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { func, bool, string, number, arrayOf } from 'prop-types';
 
-import actionsCreators from '../../../redux/game/actions';
+import actionsGame from '../../../redux/game/actions';
 
 import { calculateWinner, getWinner } from './utils';
 import styles from './styles.module.scss';
@@ -13,7 +13,7 @@ class Game extends Component {
   handleClick = i => {
     const { history, winner, xIsNext, addMove, setWinner } = this.props;
     const current = history[history.length - 1];
-    const squares = current.slice();
+    const squares = [...current];
 
     if (winner || squares[i]) {
       return;
@@ -71,16 +71,16 @@ Game.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  history: state.history,
-  stepNumber: state.stepNumber,
-  xIsNext: state.xIsNext,
-  winner: state.winner
+  history: state.game.history,
+  stepNumber: state.game.stepNumber,
+  xIsNext: state.game.xIsNext,
+  winner: state.game.winner
 });
 
 const mapDispatchToProps = dispatch => ({
-  addMove: i => dispatch(actionsCreators.addMove(i)),
-  removeMove: step => dispatch(actionsCreators.removeMove(step)),
-  setWinner: winner => dispatch(actionsCreators.setWinner(winner))
+  addMove: i => dispatch(actionsGame.addMove(i)),
+  removeMove: step => dispatch(actionsGame.removeMove(step)),
+  setWinner: winner => dispatch(actionsGame.setWinner(winner))
 });
 
 export default connect(

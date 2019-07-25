@@ -1,26 +1,20 @@
 import React, { Component, Fragment } from 'react';
+import { arrayOf, bool, func, shape, string } from 'prop-types';
+import { connect } from 'react-redux';
 import Spinner from 'react-spinkit';
 
-import MatchesService from '../../../../../services/MatchesService';
+import actionsMatches from '../../../../../redux/matches/actions';
 import { getWinnerClass } from '../../utils';
 
 import { PLAYER_ONE, PLAYER_TWO } from './constants';
 
 class Matches extends Component {
-  state = {
-    data: [],
-    loading: true
-  };
-
   componentDidMount() {
-    const match = MatchesService.getMatch();
-    match.then(result => {
-      this.setState({ data: result.data, loading: false });
-    });
+    this.props.getMatches(this.props.data);
   }
 
   render() {
-    const { loading, data } = this.state;
+    const { loading, data } = this.props;
     return (
       <Fragment>
         <h1>Match History</h1>
@@ -41,4 +35,22 @@ class Matches extends Component {
   }
 }
 
-export default Matches;
+Matches.propTypes = {
+  getMatches: func.isRequired,
+  data: arrayOf(shape({ PLAYER_ONE: string, PLAYER_TWO: string })),
+  loading: bool
+};
+
+const mapStateToProps = state => ({
+  data: state.matches.data,
+  loading: state.matches.loading
+});
+
+const mapDispatchToProps = dispatch => ({
+  getMatches: data => dispatch(actionsMatches.getMatches(data))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Matches);

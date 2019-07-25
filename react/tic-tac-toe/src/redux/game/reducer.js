@@ -1,3 +1,5 @@
+import Inmutable from 'seamless-immutable';
+
 import { actions } from './actions';
 
 const initialState = {
@@ -7,7 +9,7 @@ const initialState = {
   winner: null
 };
 
-function reducer(state = initialState, action) {
+function reducer(state = Inmutable(initialState), action) {
   switch (action.type) {
     case actions.ADD_MOVE:
       return state.merge({
