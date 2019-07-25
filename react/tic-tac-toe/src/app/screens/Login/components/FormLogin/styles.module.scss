@@ -1,6 +1,7 @@
 .form-login {
-  width: 500px;
-  padding: 10px;
+  margin: auto;
+  width: 600px;
+  padding: 30px;
   border: 2px solid aquamarine;
   border-radius: 10px;
 }
@@ -11,9 +12,9 @@
 }
 
 .form-field {
-  background-color: aquamarine;
-  color: white;
-  width: 80%;
+  border: 1px solid aquamarine;
+  color: grey;
+  width: 100%;
   margin: 10px;
 }
 
@@ -21,4 +22,10 @@
   background-color: aquamarine;
   border-radius: 5px;
   padding: 10px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form-error {
+  color: red;
 }
