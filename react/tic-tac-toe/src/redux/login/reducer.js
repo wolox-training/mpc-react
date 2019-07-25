@@ -4,7 +4,7 @@ import { actions } from './actions';
 
 const initialState = {
   values: {},
-  isLoading: false,
+  isLogged: false,
   error: null
 };
 
@@ -17,7 +17,7 @@ function reducer(state = Inmutable(initialState), action) {
     case actions.LOGIN_SUCCESS:
       return state.merge({
         values: action.payload,
-        isLoading: true
+        isLogged: true
       });
     case actions.LOGIN_FAILURE:
       return state.merge({
