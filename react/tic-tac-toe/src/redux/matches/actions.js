@@ -6,7 +6,7 @@ export const actions = {
   GET_MATCHES_FAILURE: '@@MATCHES/GET_MATCHES_FAILURE'
 };
 
-const actionsCreators = {
+const actionsMatches = {
   getMatches: data => async dispatch => {
     dispatch({
       type: actions.GET_MATCHES,
@@ -27,4 +27,4 @@ const actionsCreators = {
   }
 };
 
-export default actionsCreators;
+export default actionsMatches;

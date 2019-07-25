@@ -3,8 +3,10 @@ import { arrayOf, bool, func, shape, string } from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from 'react-spinkit';
 
-import actionsCreators from '../../../../../redux/matches/actions';
+import actionsMatches from '../../../../../redux/matches/actions';
 import { getWinnerClass } from '../../utils';
+
+import { PLAYER_ONE, PLAYER_TWO } from './constants';
 
 class Matches extends Component {
   componentDidMount() {
@@ -16,14 +18,14 @@ class Matches extends Component {
     return (
       <Fragment>
         <h1>Match History</h1>
-        {loading && loading ? (
+        {loading ? (
           <Spinner name="three-bounce" color="#00ADEE" />
         ) : (
           <ol>
             {data.map(item => (
               <li key={item.id}>
-                <span className={getWinnerClass(item.winner === 'player_one')}>{item.player_one}</span> -{' '}
-                <span className={getWinnerClass(item.winner === 'player_two')}>{item.player_two}</span>
+                <span className={getWinnerClass(item.winner === PLAYER_ONE)}>{item.player_one}</span> -{' '}
+                <span className={getWinnerClass(item.winner === PLAYER_TWO)}>{item.player_two}</span>
               </li>
             ))}
           </ol>
@@ -45,7 +47,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMatches: data => dispatch(actionsCreators.getMatches(data))
+  getMatches: data => dispatch(actionsMatches.getMatches(data))
 });
 
 export default connect(
