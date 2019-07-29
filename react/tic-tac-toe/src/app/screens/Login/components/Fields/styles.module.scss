@@ -1,0 +1,14 @@
+@import '../../../../../scss/colors';
+
+.form-input {
+  border: 1px solid aquamarine;
+  color: $dust-gray;
+  height: 25px;
+  margin: 10px;
+  width: 100%;
+}
+
+.form-error {
+  color: $red;
+  margin-left: 10px;
+}
