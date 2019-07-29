@@ -1,4 +1,6 @@
-import UsersService from '../../services/UsersService';
+import { push } from 'connected-react-router';
+
+import LoginService from '../../services/LoginService';
 
 export const actions = {
   LOGIN: '@@LOGIN/LOGIN',
@@ -9,14 +11,14 @@ export const actions = {
 const actionsLogin = {
   login: values => async dispatch => {
     dispatch({
-      type: actions.LOGIN,
-      payload: values
+      type: actions.LOGIN
     });
-    const response = await UsersService.getUser();
+    const response = await LoginService.login(values);
     if (response.ok) {
+      dispatch(push('/game'));
       dispatch({
         type: actions.LOGIN_SUCCESS,
-        payload: response.values
+        payload: response.data
       });
     } else {
       dispatch({
