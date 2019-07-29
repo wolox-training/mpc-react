@@ -2,27 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 
 import App from './app';
 import Login from './app/screens/Login';
 import './config/i18n';
 import './scss/application.scss';
 import { register } from './serviceWorker';
-import store from './redux/store';
+import store, { history } from './redux/store';
 
 const render = () => {
   ReactDOM.render(
-    <Provider store={store}>
-      <AppContainer>
-        <Router>
+    <AppContainer>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
           <Switch>
-            <Route exact path="/" component={App} />
             <Route path="/login" component={Login} />
+            <Route exact path="/game" component={App} />
           </Switch>
-        </Router>
-      </AppContainer>
-    </Provider>,
+        </ConnectedRouter>
+      </Provider>
+    </AppContainer>,
     document.getElementById('root')
   );
 };
