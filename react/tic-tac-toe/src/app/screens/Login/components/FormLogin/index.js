@@ -1,58 +1,29 @@
 import React from 'react';
-import { objectOf, string, func, bool } from 'prop-types';
-import { connect } from 'react-redux';
 import { Field, reduxForm, Form } from 'redux-form';
 
-import { email, minLength } from '../../validation';
-import actionsLogin from '../../../../../redux/login/actions';
+import { customInput } from '../Fields';
+import { required, email, minLength } from '../../validation';
 
 import styles from './styles.module.scss';
 
-function FormLogin({ handleSubmit }, meta) {
+function FormLogin({ handleSubmit }) {
   return (
     <Form onSubmit={handleSubmit} className={styles.formLogin}>
-      <div>
-        <label className={styles.formLabel}>Email</label>
-        {meta && meta.error && meta.touched(<div styles={{ color: 'red' }}>{meta.error}</div>)}
-        <Field name="email" component="input" type="text" className={styles.formField} validate={[email]} />
-      </div>
-      <div>
-        <label className={styles.formLabel}>Password</label>
-        {meta.error && meta.touched(<div className={styles.error}>{meta.error}</div>)}
-        <Field
-          name="password"
-          component="input"
-          type="password"
-          className={styles.formField}
-          validate={[minLength]}
-        />
-      </div>
+      <Field name="email" component={customInput} type="text" label="Email" validate={[required, email]} />
+      <Field
+        name="password"
+        component={customInput}
+        type="password"
+        label="Password"
+        validate={[required, minLength]}
+      />
       <button type="submit" className={styles.formButton}>
-        Submit
+        Login
       </button>
     </Form>
   );
 }
 
-FormLogin.propTypes = {
-  getUser: func.isRequired,
-  values: objectOf(string),
-  isLogged: bool
-};
-
-const mapStatetoProps = state => ({
-  values: state.login.values
-});
-
-const mapDispatchToProps = dispatch => ({
-  getUser: values => dispatch(actionsLogin.getUser(values))
-});
-
-export default connect(
-  mapStatetoProps,
-  mapDispatchToProps
-)(
-  reduxForm({
-    form: 'login'
-  })(FormLogin)
-);
+export default reduxForm({
+  form: 'login'
+})(FormLogin);

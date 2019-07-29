@@ -1,31 +1,25 @@
+@import '../../../../../scss/colors';
+
 .form-login {
-  margin: auto;
-  width: 600px;
-  padding: 30px;
   border: 2px solid aquamarine;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 30px;
+  width: 600px;
 }
 
 .form-label {
-  color: blue;
-  margin: 10px;
-}
-
-.form-field {
-  border: 1px solid aquamarine;
-  color: grey;
-  width: 100%;
+  color: $black;
   margin: 10px;
 }
 
 .form-button {
+  align-self: center;
   background-color: aquamarine;
   border-radius: 5px;
-  padding: 10px;
-  text-align: center;
   margin-top: 10px;
-}
-
-.form-error {
-  color: red;
+  padding: 10px;
+  width: 100px;
 }
