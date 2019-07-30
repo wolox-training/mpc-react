@@ -11,6 +11,7 @@ import './config/i18n';
 import './scss/application.scss';
 import { register } from './serviceWorker';
 import store, { history } from './redux/store';
+import { LOGIN, GAME } from './constants/routes';
 
 const render = () => {
   ReactDOM.render(
@@ -18,8 +19,8 @@ const render = () => {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route exact path="/game" component={App} />
+            <Route path={LOGIN} component={Login} />
+            <Route exact path={GAME} component={App} />
           </Switch>
         </ConnectedRouter>
       </Provider>

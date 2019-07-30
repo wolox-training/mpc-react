@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { func } from 'prop-types';
 
 import actionsLogin from '../../../redux/login/actions';
 
@@ -7,7 +8,8 @@ import FormLogin from './components/FormLogin';
 
 class Login extends Component {
   handleSubmit = values => {
-    this.props.login(JSON.stringify(values, null, 4));
+    const { login } = this.props;
+    login(JSON.stringify(values, null, 4));
   };
 
   render() {
@@ -15,15 +17,15 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  values: state.login.values
-});
+Login.propTypes = {
+  login: func
+};
 
 const mapDispatchToProps = dispatch => ({
   login: values => dispatch(actionsLogin.login(values))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Login);
