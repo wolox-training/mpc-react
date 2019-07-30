@@ -16,6 +16,7 @@ const actionsLogin = {
     const response = await LoginService.login(values);
     if (response.ok) {
       dispatch(push('/game'));
+      window.localStorage.setItem('token', JSON.stringify(response.data.token));
       dispatch({
         type: actions.LOGIN_SUCCESS,
         payload: response.data
