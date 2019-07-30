@@ -1,0 +1,26 @@
+@import '../../../../../scss/colors';
+
+.form-login {
+  border: 2px solid $turquoise;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 30px;
+  width: 600px;
+}
+
+.form-label {
+  color: $black;
+  margin: 10px;
+}
+
+.form-button {
+  align-self: center;
+  background-color: $turquoise;
+  border-radius: 5px;
+  color: $white;
+  margin-top: 10px;
+  padding: 10px;
+  width: 100px;
+}
