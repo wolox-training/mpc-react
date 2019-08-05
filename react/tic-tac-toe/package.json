@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.20",
+    "@fortawesome/free-brands-svg-icons": "^5.10.0",
+    "@fortawesome/free-solid-svg-icons": "^5.10.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@redux-beacon/google-analytics": "^1.1.1",
     "apisauce": "^1.0.0",
     "babel-plugin-module-resolver": "^3.1.1",
@@ -51,6 +55,7 @@
   ],
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@fortawesome/fontawesome-free": "^5.10.0",
     "@storybook/react": "^4.0.9",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^3.3.0",
