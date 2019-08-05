@@ -1,15 +1,20 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 import styles from './styles.module.scss';
 
-function Topbar() {
+function Topbar({ handleClick }) {
   return (
     <nav className={styles.topbar}>
-      <li>
-        <a href="http://localhost:3001/login">Logout</a>
-        <FontAwesomeIcon icon="sign-out-alt" />
-      </li>
+      <ul>
+        <Link to={{ pathname: '/point-history' }} className={styles.topbarLink}>Point History</Link>
+        <li>
+          <button type="button" onClick={handleClick}>
+            <FontAwesomeIcon icon="sign-out-alt" />
+          </button>
+        </li>
+      </ul>
     </nav>
   );
 }
