@@ -2,16 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 
 import App from './app';
 import Login from './app/screens/Login';
+import PointHistory from './app/screens/PointHistory';
+// eslint-disable-next-line import/order
+import AuthRoute from './app/components/AuthRoute';
+
 import './config/i18n';
 import './scss/application.scss';
 import { register } from './serviceWorker';
 import store, { history } from './redux/store';
-import { LOGIN, GAME } from './constants/routes';
+import { LOGIN, GAME, POINT_HISTORY } from './constants/routes';
 
 const render = () => {
   ReactDOM.render(
