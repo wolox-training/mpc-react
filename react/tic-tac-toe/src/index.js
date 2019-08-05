@@ -19,8 +19,9 @@ const render = () => {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <Switch>
-            <Route path={LOGIN} component={Login} />
-            <Route exact path={GAME} component={App} />
+            <AuthRoute path={LOGIN} component={Login} />
+            <AuthRoute path={GAME} component={App} isPrivate />
+            <AuthRoute path={POINT_HISTORY} component={PointHistory} isPrivate />
           </Switch>
         </ConnectedRouter>
       </Provider>
