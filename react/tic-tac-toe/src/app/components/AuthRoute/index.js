@@ -8,17 +8,21 @@ import { LOGIN } from '../../../constants/routes';
 class AuthRoute extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token');
-    console.log('hola', token);
-    if (this.props.isPrivate && !token) {
-      this.props.pushLogin();
+    if (this.isPrivate && !token) {
+      this.pushLogin();
       console.log('isPrivate');
     }
   }
 
   render() {
-    return <Route path={this.props.path} component={this.props.component} />;
+    return <Route path={this.path} component={this.props.component} />;
   }
 }
+
+const mapStateToProps = state => ({
+  path: state.path,
+  isPrivate: state.isPrivate
+});
 
 const mapDispatchToProps = dispatch => ({
   pushLogin: () => {
@@ -27,6 +31,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AuthRoute);

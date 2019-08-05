@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { func } from 'prop-types';
 
-import actionsLogin from '../../../redux/login/actions';
+import actionsCreators from '../../../redux/auth/actions';
 
 import FormLogin from './components/FormLogin';
 
 class Login extends Component {
   handleSubmit = values => {
     const { login } = this.props;
-    login(JSON.stringify(values, null, 4));
+    login(values);
   };
 
   render() {
@@ -22,7 +22,7 @@ Login.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  login: values => dispatch(actionsLogin.login(values))
+  login: values => dispatch(actionsCreators.login(values))
 });
 
 export default connect(

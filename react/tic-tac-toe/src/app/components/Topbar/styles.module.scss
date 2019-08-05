@@ -1,28 +1,29 @@
 @import '../../../scss/colors';
 
 .topbar {
-  background-color: $black;
-  color: $white;
+  align-items: center;
+  background: linear-gradient($turquoise, $black);
   display: flex;
   flex-direction: row;
   height: 80px;
-  justify-content: flex-end;
+  justify-content: space-between;
+  margin-bottom: 50px;
   width: 100%;
 }
 
-.topbar ul {
-  display: flex;
-  align-items: center;
-}
-
-.topbar-link {
-  color: $white;
-  font-size: 16px;
-  padding-right: 20px;
-}
-
-.topbar button {
-  color: $white;
-  font-size: 18px;
+.topbar-name {
+  font-size: 35px;
   padding: 10px;
+  color: $white;
+}
+
+.topbar ul {
+  align-items: center;
+  display: flex;
+}
+
+.topbar-item {
+  color: $white;
+  font-size: 20px;
+  padding-right: 20px;
 }

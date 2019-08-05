@@ -1,26 +1,34 @@
-import React, { Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { func } from 'prop-types';
 
-import Topbar from './components/Topbar';
+import actionsCreators from '../redux/auth/actions';
+
 import Game from './screens/Game';
-
-import '../scss/application.scss';
 
 library.add(faSignOutAlt);
 
-function App({ isLogged }) {
-  return (
-    <Fragment>
-      {isLogged ? <Topbar /> : console.log('Usuario no logueado')}
-      <Game />
-    </Fragment>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.authInit();
+  }
+
+  render() {
+    return <Game />;
+  }
 }
 
-const mapStateToProps = state => ({
-  isLogged: state.login.isLogged
+App.propTypes = {
+  authInit: func
+};
+
+const mapDispatchToProps = dispatch => ({
+  authInit: () => dispatch(actionsCreators.authInit())
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);

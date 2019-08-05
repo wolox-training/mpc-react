@@ -41,7 +41,7 @@ const actionsCreators = {
       localStorage.setItem(TOKEN, tokenEnc);
       dispatch({
         type: actions.LOGIN_SUCCESS,
-        payload: response.data
+        payload: { token: response.data, email: values.email }
       });
       dispatch(push(GAME));
     } else {

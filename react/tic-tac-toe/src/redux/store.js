@@ -6,7 +6,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 import game from './game/reducer';
 import matches from './matches/reducer';
-import login from './login/reducer';
+import auth from './auth/reducer';
 
 export const history = createBrowserHistory();
 
@@ -14,7 +14,7 @@ const reducer = combineReducers({
   router: connectRouter(history),
   game,
   matches,
-  login,
+  auth,
   form: formReducer
 });
 
