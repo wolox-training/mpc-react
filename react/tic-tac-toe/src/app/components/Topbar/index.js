@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
+import faSignOutAlt from '../../assets/sign-out-alt-solid.svg';
 import actionsCreators from '../../../redux/auth/actions';
+import { POINT_HISTORY } from '../../../constants/routes';
 
 import styles from './styles.module.scss';
 
@@ -24,23 +27,29 @@ class Topbar extends Component {
               <p className={styles.topbarItem}>{email}</p>
             </li>
             <li>
-              <Link to={{ pathname: '/point-history' }} className={styles.topbarItem}>
+              <Link to={{ pathname: POINT_HISTORY }} className={styles.topbarItem}>
                 Point History
               </Link>
             </li>
             <li>
               <button type="button" onClick={this.handleClick} className={styles.topbarItem}>
-                <FontAwesomeIcon icon="sign-out-alt" />
+                <img src={faSignOutAlt} alt="Logout" className={styles.topbarIcon} />
               </button>
             </li>
           </ul>
-        ) : (
+        ) :
           ''
-        )}
+        }
       </nav>
     );
   }
 }
+
+Topbar.propTypes = {
+  email: PropTypes.string,
+  isLogged: PropTypes.bool,
+  logout: PropTypes.func
+};
 
 const mapStateToProps = state => ({
   isLogged: state.auth.isLogged,
