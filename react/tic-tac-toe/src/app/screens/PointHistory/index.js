@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
+import Matches from './Matches';
+import MoveHistory from './MoveHistory';
+import styles from './styles.module.scss';
 
 function PointHistory() {
-  return <h1>Point History</h1>;
+  return (
+    <Fragment>
+      <div className={styles.pointsNamePage}>
+        <p>Point History</p>
+      </div>
+      <div className={styles.pointsContainer}>
+        <Matches />
+        <MoveHistory />
+      </div>
+    </Fragment>
+  );
 }
 
 export default PointHistory;
