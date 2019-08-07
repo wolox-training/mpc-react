@@ -28,8 +28,8 @@ const render = () => {
             <Topbar />
             <Switch>
               <AuthRoute path={LOGIN} component={Login} />
-              <AuthRoute path={GAME} component={App} isPrivate />
-              <AuthRoute path={POINT_HISTORY} component={PointHistory} isPrivate />
+              <AuthRoute path={GAME} component={Game} isPrivate />
+              <AuthRoute path={PLAY_HISTORY} component={PlayHistory} isPrivate />
             </Switch>
           </Fragment>
         </ConnectedRouter>
