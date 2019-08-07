@@ -1,30 +1,35 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { func } from 'prop-types';
+import React, { Fragment } from 'react';
+import { Provider } from 'react-redux';
+import { Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { AppContainer } from 'react-hot-loader';
 
-import actionsCreators from '../redux/auth/actions';
+import store, { history } from '../redux/store';
+import { LOGIN, GAME, POINT_HISTORY } from '../constants/routes';
 
+import AuthRoute from './components/AuthRoute';
+import Topbar from './components/Topbar';
+import Login from './screens/Login';
+import PointHistory from './screens/PointHistory';
 import Game from './screens/Game';
 
-class App extends Component {
-  componentDidMount() {
-    this.props.authInit();
-  }
-
-  render() {
-    return <Game />;
-  }
+function App() {
+  return (
+    <AppContainer>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <Fragment>
+            <Topbar />
+            <Switch>
+              <AuthRoute path={LOGIN} component={Login} />
+              <AuthRoute path={GAME} component={Game} isPrivate />
+              <AuthRoute path={POINT_HISTORY} component={PointHistory} isPrivate />
+            </Switch>
+          </Fragment>
+        </ConnectedRouter>
+      </Provider>
+    </AppContainer>
+  );
 }
 
-App.propTypes = {
-  authInit: func
-};
-
-const mapDispatchToProps = dispatch => ({
-  authInit: () => dispatch(actionsCreators.authInit())
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(App);
+export default App;
