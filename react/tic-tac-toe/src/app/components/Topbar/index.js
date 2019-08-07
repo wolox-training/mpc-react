@@ -24,8 +24,8 @@ class Topbar extends Component {
               <p className={styles.topbarItem}>{email}</p>
             </li>
             <li>
-              <Link to={{ pathname: '/point-history' }} className={styles.topbarItem}>
-                Point History
+              <Link to={{ pathname: '/play-history' }} className={styles.topbarItem}>
+                Play History
               </Link>
             </li>
             <li>

@@ -7,8 +7,9 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import Topbar from './app/components/Topbar';
 import App from './app';
+import Game from './app/screens/Game';
 import Login from './app/screens/Login';
-import PointHistory from './app/screens/PointHistory';
+import PlayHistory from './app/screens/PlayHistory';
 // eslint-disable-next-line import/order
 import AuthRoute from './app/components/AuthRoute';
 
@@ -16,7 +17,7 @@ import './config/i18n';
 import './scss/application.scss';
 import { register } from './serviceWorker';
 import store, { history } from './redux/store';
-import { LOGIN, GAME, POINT_HISTORY } from './constants/routes';
+import { LOGIN, GAME, PLAY_HISTORY } from './constants/routes';
 
 const render = () => {
   ReactDOM.render(
