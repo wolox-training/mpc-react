@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import faSignOutAlt from '../../assets/sign-out-alt-solid.svg';
 import actionsCreators from '../../../redux/auth/actions';
-import { GAME, POINT_HISTORY } from '../../../constants/routes';
+import { GAME, PLAY_HISTORY } from '../../../constants/routes';
 
 import styles from './styles.module.scss';
 
@@ -30,8 +30,8 @@ class Topbar extends Component {
             </Link>
           </li>
           <li>
-            <Link to={{ pathname: POINT_HISTORY }} className={styles.topbarItem}>
-              Point History
+            <Link to={{ pathname: PLAY_HISTORY }} className={styles.topbarItem}>
+              Play History
             </Link>
           </li>
           <li>
@@ -41,9 +41,9 @@ class Topbar extends Component {
           </li>
         </ul>
       </nav>
-    ) :
+    ) : (
       ''
-    ;
+    );
   }
 }
 

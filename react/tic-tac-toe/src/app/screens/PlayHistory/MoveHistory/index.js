@@ -21,7 +21,6 @@ class MoveHistory extends Component {
 
   handleClick = id => {
     const { data } = this.props;
-    // console.log(id);
     this.setState({
       history: data[id].history
     });

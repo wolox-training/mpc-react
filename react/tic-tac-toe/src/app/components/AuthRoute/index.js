@@ -15,6 +15,7 @@ class AuthRoute extends Component {
       if (!token) {
         this.props.redirectLogin();
       }
+      this.props.authInit();
     }
   }
 
@@ -25,6 +26,7 @@ class AuthRoute extends Component {
 }
 
 AuthRoute.propTypes = {
+  authInit: PropTypes.func,
   component: PropTypes.func,
   isPrivate: PropTypes.bool,
   path: PropTypes.string,

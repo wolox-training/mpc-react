@@ -5,12 +5,12 @@ import { ConnectedRouter } from 'connected-react-router';
 import { AppContainer } from 'react-hot-loader';
 
 import store, { history } from '../redux/store';
-import { LOGIN, GAME, POINT_HISTORY } from '../constants/routes';
+import { LOGIN, GAME, PLAY_HISTORY } from '../constants/routes';
 
 import AuthRoute from './components/AuthRoute';
 import Topbar from './components/Topbar';
 import Login from './screens/Login';
-import PointHistory from './screens/PointHistory';
+import PlayHistory from './screens/PlayHistory';
 import Game from './screens/Game';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
             <Switch>
               <AuthRoute path={LOGIN} component={Login} />
               <AuthRoute path={GAME} component={Game} isPrivate />
-              <AuthRoute path={POINT_HISTORY} component={PointHistory} isPrivate />
+              <AuthRoute path={PLAY_HISTORY} component={PlayHistory} isPrivate />
             </Switch>
           </Fragment>
         </ConnectedRouter>
