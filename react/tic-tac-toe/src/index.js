@@ -1,46 +1,17 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import { Provider } from 'react-redux';
-import { Switch } from 'react-router-dom';
-import { ConnectedRouter } from 'connected-react-router';
 
-import Topbar from './app/components/Topbar';
 import App from './app';
-import Game from './app/screens/Game';
-import Login from './app/screens/Login';
-import PlayHistory from './app/screens/PlayHistory';
-// eslint-disable-next-line import/order
-import AuthRoute from './app/components/AuthRoute';
-
 import './config/i18n';
 import './scss/application.scss';
 import { register } from './serviceWorker';
-import store, { history } from './redux/store';
-import { LOGIN, GAME, PLAY_HISTORY } from './constants/routes';
 
 const render = () => {
-  ReactDOM.render(
-    <AppContainer>
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Fragment>
-            <Topbar />
-            <Switch>
-              <AuthRoute path={LOGIN} component={Login} />
-              <AuthRoute path={GAME} component={Game} isPrivate />
-              <AuthRoute path={PLAY_HISTORY} component={PlayHistory} isPrivate />
-            </Switch>
-          </Fragment>
-        </ConnectedRouter>
-      </Provider>
-    </AppContainer>,
-    document.getElementById('root')
-  );
+  ReactDOM.render(<App />, document.getElementById('root'));
 };
 
 // Render once
-render(App);
+render();
 
 register();
 
