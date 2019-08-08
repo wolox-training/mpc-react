@@ -9,9 +9,11 @@ import { TOKEN } from '../../../constants/auth';
 
 class AuthRoute extends Component {
   componentDidMount() {
-    const token = localStorage.getItem(TOKEN);
-    if (this.isPrivate && !token) {
-      this.pushLogin();
+    if (this.props.isPrivate) {
+      const token = localStorage.getItem(TOKEN);
+      if (!token) {
+        this.props.redirectLogin();
+      }
     }
   }
 
@@ -23,21 +25,18 @@ class AuthRoute extends Component {
 
 AuthRoute.propTypes = {
   component: PropTypes.func,
-  path: PropTypes.string
+  isPrivate: PropTypes.bool,
+  path: PropTypes.string,
+  redirectLogin: PropTypes.func
 };
 
-const mapStateToProps = state => ({
-  path: state.path,
-  isPrivate: state.isPrivate
-});
-
 const mapDispatchToProps = dispatch => ({
-  pushLogin: () => {
+  redirectLogin: () => {
     dispatch(push(LOGIN));
   }
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(AuthRoute);

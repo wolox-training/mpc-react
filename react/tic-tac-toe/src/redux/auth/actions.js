@@ -15,7 +15,7 @@ export const actions = {
   LOGOUT_FAILURE: '@@LOGOUT/LOGOUT_FAILURE'
 };
 
-const actionsCreators = {
+const actionsAuth = {
   authInit: () => dispatch => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -68,4 +68,4 @@ const actionsCreators = {
   }
 };
 
-export default actionsCreators;
+export default actionsAuth;
