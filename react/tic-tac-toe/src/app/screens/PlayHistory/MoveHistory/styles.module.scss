@@ -14,8 +14,24 @@ ol li {
   padding-top: 5px;
 }
 
+.alert {
+  color: $black;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.close {
+  background-color: $turquoise;
+  border-radius: 5px;
+  color: $black;
+  font-size: 25px;
+  margin-top: 50px;
+  padding: 10px;
+}
+
 .winner {
-  color: $blue;
+  color: $turquoise;
+  font-weight: 600;
 }
 
 .move-container {
