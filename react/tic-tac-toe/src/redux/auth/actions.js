@@ -52,9 +52,6 @@ const actionsAuth = {
     }
   },
   logout: () => dispatch => {
-    dispatch({
-      type: actions.LOGOUT
-    });
     dispatch(push(LOGIN));
     localStorage.removeItem(TOKEN);
     dispatch({
