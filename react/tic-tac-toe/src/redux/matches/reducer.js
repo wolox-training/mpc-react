@@ -1,31 +1,17 @@
 import Inmutable from 'seamless-immutable';
+import { createReducer, completeReducer, completeState } from 'redux-recompose';
 
 import { actions } from './actions';
 
-const initialState = {
-  data: [],
-  loading: true,
-  error: null
+const stateDescription = {
+  matches: []
 };
 
-function reducer(state = Inmutable(initialState), action) {
-  switch (action.type) {
-    case actions.GET_MATCHES:
-      return state.merge({
-        data: action.payload
-      });
-    case actions.GET_MATCHES_SUCCESS:
-      return state.merge({
-        data: action.payload,
-        loading: false
-      });
-    case actions.GET_MATCHES_FAILURE:
-      return state.merge({
-        error: action.payload
-      });
-    default:
-      return state;
-  }
-}
+const initialState = completeState(stateDescription);
 
-export default reducer;
+const reducerDescription = {
+  primaryActions: [actions.GET_MATCHES],
+  override: {}
+};
+
+export default createReducer(Inmutable(initialState), completeReducer(reducerDescription));
