@@ -19,7 +19,7 @@ class MoveHistory extends Component {
   };
 
   componentDidMount() {
-    this.props.getMatches(this.props.data);
+    this.props.getMatches();
   }
 
   openModal() {
@@ -35,11 +35,11 @@ class MoveHistory extends Component {
   }
 
   handleClick = id => {
-    const { data } = this.props;
-    const history = data[id].history;
+    const { matches } = this.props;
+    const history = matches[id].history;
     if (history) {
       this.setState({
-        history: data[id].history,
+        history: matches[id].history,
         alert: undefined,
         visible: false
       });
@@ -53,7 +53,7 @@ class MoveHistory extends Component {
   };
 
   render() {
-    const { loading, data } = this.props;
+    const { loading, matches } = this.props;
     return (
       <div className={styles.matchesContainer}>
         {loading ? (
@@ -61,11 +61,11 @@ class MoveHistory extends Component {
         ) : (
           <ol>
             <h1>Match History</h1>
-            {data.map((item, i) => (
+            {matches.map((item, i) => (
               <li key={item.id} onClick={() => this.handleClick(i)}>
                 <span className={getWinnerClass(item.winner === PLAYER_ONE)}>{item.player_one}</span> -{' '}
                 <span className={getWinnerClass(item.winner === PLAYER_TWO)}>{item.player_two}</span>
-                {this.state.visible && !this.state.history? (
+                {this.state.visible && !this.state.history ? (
                   <Modal
                     visible={this.state.visible}
                     width="300"
@@ -84,9 +84,9 @@ class MoveHistory extends Component {
                       </a>
                     </div>
                   </Modal>
-                ) :
+                ) : (
                   ''
-                }
+                )}
               </li>
             ))}
           </ol>
@@ -103,19 +103,19 @@ class MoveHistory extends Component {
 MoveHistory.propTypes = {
   getMatches: func.isRequired,
   alert: string,
-  data: arrayOf(shape({ PLAYER_ONE: string, PLAYER_TWO: string })),
   history: arrayOf(string),
   loading: bool,
+  matches: arrayOf(shape({ PLAYER_ONE: string, PLAYER_TWO: string })),
   visible: bool
 };
 
 const mapStateToProps = state => ({
-  data: state.matches.data,
-  loading: state.matches.loading
+  matches: state.matches.matches,
+  loading: state.matches.matchesLoading
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMatches: data => dispatch(actionsMatches.getMatches(data))
+  getMatches: () => dispatch(actionsMatches.getMatches())
 });
 
 export default connect(
