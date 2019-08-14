@@ -24,11 +24,16 @@ class AuthRoute extends Component {
 }
 
 AuthRoute.propTypes = {
-  component: PropTypes.func,
+  component: PropTypes.element,
   isPrivate: PropTypes.bool,
   path: PropTypes.string,
-  redirectLogin: PropTypes.func
+  redirectLogin: PropTypes.func,
+  token: PropTypes.string
 };
+
+const mapStateToProps = state => ({
+  token: state.auth.token
+});
 
 const mapDispatchToProps = dispatch => ({
   redirectLogin: () => {
@@ -37,6 +42,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AuthRoute);
