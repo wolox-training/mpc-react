@@ -1,11 +1,19 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { AppContainer } from 'react-hot-loader';
 
-import Game from './screens/Game';
+import store from '../redux/store';
 
-import '../scss/application.scss';
+import Routes from './components/Routes';
 
 function App() {
-  return <Game />;
+  return (
+    <AppContainer>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
+    </AppContainer>
+  );
 }
 
 export default App;

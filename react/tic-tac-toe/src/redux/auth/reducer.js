@@ -4,9 +4,10 @@ import { actions } from './actions';
 
 const initialState = {
   values: {},
-  isLogged: false,
+  isLogged: null,
   error: null,
-  token: null
+  token: null,
+  email: ''
 };
 
 function reducer(state = Inmutable(initialState), action) {
@@ -18,11 +19,26 @@ function reducer(state = Inmutable(initialState), action) {
     case actions.LOGIN_SUCCESS:
       return state.merge({
         isLogged: true,
-        token: action.payload.token
+        token: action.payload.token,
+        email: action.payload.email
       });
     case actions.LOGIN_FAILURE:
       return state.merge({
         error: action.payload
+      });
+    case actions.LOGOUT_SUCCESS:
+      return state.merge({
+        isLogged: null,
+        email: null,
+        token: null
+      });
+    case actions.LOGOUT_FAILURE:
+      return state.merge({
+        error: action.payload
+      });
+    case actions.AUTH_INIT:
+      return state.merge({
+        isLogged: action.payload
       });
     default:
       return state;
