@@ -17,7 +17,7 @@ export const actions = {
 
 const actionsAuth = {
   authInit: () => dispatch => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem({ TOKEN });
     if (token) {
       dispatch({
         type: actions.AUTH_INIT,
