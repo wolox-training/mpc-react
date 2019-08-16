@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { element, bool, string, func } from 'prop-types';
+import { push } from 'connected-react-router';
 
-import actionsCreators from '../../../redux/auth/actions';
-import { LOGIN } from '../../../constants/routes';
-import { TOKEN } from '../../../constants/auth';
+import { LOGIN, GAME } from '../../../constants/routes';
 
 class AuthRoute extends Component {
   componentDidMount() {
     if (this.props.isPrivate) {
-      const token = localStorage.getItem(TOKEN);
-      if (!token) {
+      if (!this.props.isLogged) {
         this.props.redirectLogin();
       }
-      this.props.authInit();
+    } else if (this.props.isLogged) {
+      this.props.redirectGame();
     }
   }
 
@@ -26,22 +24,28 @@ class AuthRoute extends Component {
 }
 
 AuthRoute.propTypes = {
-  authInit: PropTypes.func,
-  component: PropTypes.func,
-  isPrivate: PropTypes.bool,
-  path: PropTypes.string,
-  redirectLogin: PropTypes.func
+  component: element,
+  isLogged: bool,
+  isPrivate: bool,
+  path: string,
+  redirectGame: func,
+  redirectLogin: func
 };
+
+const mapStateToProps = state => ({
+  isLogged: state.auth.isLogged
+});
 
 const mapDispatchToProps = dispatch => ({
   redirectLogin: () => {
     dispatch(push(LOGIN));
   },
-
-  authInit: () => dispatch(actionsCreators.authInit())
+  redirectGame: () => {
+    dispatch(push(GAME));
+  }
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AuthRoute);

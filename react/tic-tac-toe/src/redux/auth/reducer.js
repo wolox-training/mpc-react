@@ -26,14 +26,10 @@ function reducer(state = Inmutable(initialState), action) {
       return state.merge({
         error: action.payload
       });
-    case actions.LOGOUT:
-      return state.merge({
-        values: {}
-      });
     case actions.LOGOUT_SUCCESS:
       return state.merge({
         isLogged: null,
-        values: {},
+        email: null,
         token: null
       });
     case actions.LOGOUT_FAILURE:
