@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Spinner from 'react-spinkit';
 import Modal from 'react-awesome-modal';
 
+import withSpinner from '../WithSpinner';
 import actionsMatches from '../../../../redux/matches/actions';
 import { getWinnerClass } from '../../Game/utils';
 import Board from '../../Game/components/Board';
@@ -84,9 +85,9 @@ class MoveHistory extends Component {
                       </a>
                     </div>
                   </Modal>
-                ) : (
+                ) : 
                   ''
-                )}
+                }
               </li>
             ))}
           </ol>
@@ -121,4 +122,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MoveHistory);
+)(withSpinner(MoveHistory));
