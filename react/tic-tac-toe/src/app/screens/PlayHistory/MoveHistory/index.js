@@ -108,7 +108,7 @@ MoveHistory.propTypes = {
 
 const mapStateToProps = state => ({
   matches: state.matches.matches,
-  loading: state.matches.loading
+  loading: state.matches.matchesLoading
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -118,4 +118,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withSpinner(props => props.loading || !props.matches)(MoveHistory));
+)(withSpinner(props => props.loading && !props.matches)(MoveHistory));
