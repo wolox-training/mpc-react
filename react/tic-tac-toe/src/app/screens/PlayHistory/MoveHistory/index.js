@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { arrayOf, bool, func, shape, string } from 'prop-types';
 import { connect } from 'react-redux';
-import Spinner from 'react-spinkit';
 import Modal from 'react-awesome-modal';
 
 import withSpinner from '../WithSpinner';
@@ -54,44 +53,41 @@ class MoveHistory extends Component {
   };
 
   render() {
-    const { loading, matches } = this.props;
+    const { matches } = this.props;
     return (
       <div className={styles.matchesContainer}>
-        {loading ? (
-          <Spinner name="three-bounce" color="#00ADEE" />
-        ) : (
-          <ol>
-            <h1>Match History</h1>
-            {matches.map((item, i) => (
-              <li key={item.id} onClick={() => this.handleClick(i)}>
-                <span className={getWinnerClass(item.winner === PLAYER_ONE)}>{item.player_one}</span> -{' '}
-                <span className={getWinnerClass(item.winner === PLAYER_TWO)}>{item.player_two}</span>
-                {this.state.visible && !this.state.history ? (
-                  <Modal
-                    visible={this.state.visible}
-                    width="300"
-                    height="200"
-                    effect="fadeInUp"
-                    onClickAway={() => this.closeModal()}
-                  >
-                    <div className={styles.text}>
-                      <p className={styles.alert}>{this.state.alert}</p>
-                      <a
-                        href="http://localhost:3001/play-history"
-                        onClick={() => this.closeModal()}
-                        className={styles.close}
-                      >
-                        Close
-                      </a>
-                    </div>
-                  </Modal>
-                ) : 
-                  ''
-                }
-              </li>
-            ))}
-          </ol>
-        )}
+        <ol>
+          <h1>Match History</h1>
+          {matches.map((item, i) => (
+            <li key={item.id} onClick={() => this.handleClick(i)}>
+              <span className={getWinnerClass(item.winner === PLAYER_ONE)}>{item.player_one}</span> -{' '}
+              <span className={getWinnerClass(item.winner === PLAYER_TWO)}>{item.player_two}</span>
+              {this.state.visible && !this.state.history ? (
+                <Modal
+                  visible={this.state.visible}
+                  width="300"
+                  height="200"
+                  effect="fadeInUp"
+                  onClickAway={() => this.closeModal()}
+                >
+                  <div className={styles.text}>
+                    <p className={styles.alert}>{this.state.alert}</p>
+                    <a
+                      href="http://localhost:3001/play-history"
+                      onClick={() => this.closeModal()}
+                      className={styles.close}
+                    >
+                      Close
+                    </a>
+                  </div>
+                </Modal>
+              ) : (
+                ''
+              )}
+            </li>
+          ))}
+        </ol>
+
         <div className={styles.moveContainer}>
           <h1>Movement History</h1>
           <Board squares={this.state.history} />
@@ -112,7 +108,7 @@ MoveHistory.propTypes = {
 
 const mapStateToProps = state => ({
   matches: state.matches.matches,
-  loading: state.matches.matchesLoading
+  loading: state.matches.loading
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -122,4 +118,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withSpinner(MoveHistory));
+)(withSpinner(props => props.loading || !props.matches)(MoveHistory));
