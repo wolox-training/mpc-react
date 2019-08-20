@@ -21,7 +21,8 @@ class MoveHistory extends Component {
   };
 
   componentDidMount() {
-    this.props.getMatches(this.props.matches);
+    const { getMatches, matches } = this.props;
+    getMatches(matches);
   }
 
   handleClickModal() {
