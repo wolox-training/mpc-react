@@ -7,7 +7,6 @@ import actionsGame from '../../../redux/game/actions';
 import { calculateWinner, getWinner } from './utils';
 import styles from './styles.module.scss';
 import Board from './components/Board';
-import Matches from './components/Matches';
 
 class Game extends Component {
   handleClick = i => {
@@ -51,9 +50,6 @@ class Game extends Component {
         </div>
         <div className={styles.gameInfo}>
           <ol>{moves}</ol>
-        </div>
-        <div className={styles.gameLoader}>
-          <Matches />
         </div>
       </div>
     );

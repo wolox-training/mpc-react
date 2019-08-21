@@ -6,11 +6,11 @@ import { func } from 'prop-types';
 
 import actionsAuth from '../../../redux/auth/actions';
 import { history } from '../../../redux/store';
-import { LOGIN, GAME, POINT_HISTORY } from '../../../constants/routes';
+import { LOGIN, GAME, PLAY_HISTORY } from '../../../constants/routes';
 import AuthRoute from '../AuthRoute';
 import Topbar from '../Topbar';
 import Login from '../../screens/Login';
-import PointHistory from '../../screens/PointHistory';
+import PlayHistory from '../../screens/PlayHistory';
 import Game from '../../screens/Game';
 
 class Routes extends Component {
@@ -26,7 +26,7 @@ class Routes extends Component {
           <Switch>
             <AuthRoute path={LOGIN} component={Login} />
             <AuthRoute path={GAME} component={Game} isPrivate />
-            <AuthRoute path={POINT_HISTORY} component={PointHistory} isPrivate />
+            <AuthRoute path={PLAY_HISTORY} component={PlayHistory} isPrivate />
           </Switch>
         </Fragment>
       </ConnectedRouter>

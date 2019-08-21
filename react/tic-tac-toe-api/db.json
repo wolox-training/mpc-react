@@ -5,42 +5,48 @@
       "player_two": "Tac",
       "winner": "tie",
       "createdAt": "2018-10-09T20:29:26.126Z",
-      "id": 1
+      "id": 1,
+      "history": ["X", "O", "X", "X", "O", "O", "O", "X", "X"]
     },
     {
       "player_one": "Tic",
       "player_two": "Tac",
       "winner": "player_one",
       "createdAt": "2018-10-09T20:29:41.211Z",
-      "id": 2
+      "id": 2,
+      "history": [null, "O", null, "X", "X", "X", null, null, "O"]
     },
     {
       "player_one": "Tic",
       "player_two": "Tac",
       "winner": "tie",
       "createdAt": "2018-10-09T20:29:47.214Z",
-      "id": 3
+      "id": 3,
+      "history": ["O", "X", "O", "O", "X", "X", "X", "O", "X"]
     },
     {
       "player_one": "Tic",
       "player_two": "Tac",
       "winner": "player_two",
       "createdAt": "2018-10-09T20:30:16.659Z",
-      "id": 4
+      "id": 4,
+      "history": ["O", null, null, "X", "O", null, "X", "X", "O"]
     },
     {
       "player_one": "Tac",
       "player_two": "Toe",
       "winner": "tie",
       "createdAt": "2018-10-09T20:30:19.167Z",
-      "id": 5
+      "id": 5,
+      "history": ["O", "O", "X", "X", "X", "O", "O", "X", "X"]
     },
     {
       "player_one": "Tic",
       "player_two": "Toe",
       "winner": "tie",
       "createdAt": "2018-10-09T20:46:10.506Z",
-      "id": 6
+      "id": 6,
+      "history": ["O", "X", "X", "X", "O", "O", "O", "X", "X"]
     }
   ],
   "users": [
