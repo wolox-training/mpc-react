@@ -18,7 +18,7 @@ function PlayHistory() {
 }
 
 const mapStateToProps = state => ({
-  history: state.matches.data.history
+  history: state.matches.history
 });
 
 export default connect(

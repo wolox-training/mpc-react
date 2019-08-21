@@ -102,7 +102,7 @@ MoveHistory.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  matches: state.matches.data,
+  matches: state.matches.matches,
   loading: state.matches.matchesLoading
 });
 
