@@ -17,7 +17,7 @@ export const actions = {
 
 const actionsAuth = {
   authInit: () => dispatch => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem({ TOKEN });
     if (token) {
       dispatch({
         type: actions.AUTH_INIT,
@@ -52,9 +52,6 @@ const actionsAuth = {
     }
   },
   logout: () => dispatch => {
-    dispatch({
-      type: actions.LOGOUT
-    });
     dispatch(push(LOGIN));
     localStorage.removeItem(TOKEN);
     dispatch({
