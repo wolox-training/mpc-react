@@ -10,7 +10,8 @@ describe('01 - matchers', () => {
   it('pow returns undefined if there is just one argument', () => {
     expect(pow(3)).toBeUndefined();
   });
-  xit('pow returns an array of power results if array of pairs are sent as arguments', () => {
+  it('pow returns an array of power results if array of pairs are sent as arguments', () => {
+    expect(pow([2, 2], [2, 1])).toEqual([4, 2]);
   });
   xit('pow returns undefined in the right position of the result array if pair is not as expected', () => {
   });
